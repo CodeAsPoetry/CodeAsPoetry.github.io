@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>模型压缩调研 - CodeAsPoetry</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    
+    <meta name="description" content="1. 模型压缩的背景原理
+背景：为了追求更高的性能，深度学习模型越来越复杂、参数越来越多。在工程应用上，耗费的计算和存储资源越来越多，成本也越来越昂贵；关键是吧，并不是差不差钱的问题，有的应用场景对,"> 
+    <meta name="author" content="Chengjie Pang"> 
+    <link rel="alternative" href="atom.xml" title="CodeAsPoetry" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">CodeAsPoetry</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">模型压缩调研</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">模型压缩调研</h1>
+        <div class="stuff">
+            <span>七月 20, 2019</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9/" rel="tag">模型压缩</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="1-模型压缩的背景原理"><a href="#1-模型压缩的背景原理" class="headerlink" title="1. 模型压缩的背景原理"></a>1. 模型压缩的背景原理</h2><ul>
+<li>背景：为了追求更高的性能，深度学习模型越来越复杂、参数越来越多。在工程应用上，耗费的计算和存储资源越来越多，成本也越来越昂贵；关键是吧，并不是差不差钱的问题，有的应用场景对模型推断的响应时间有更严格的要求，模型太大，计算量大，无法满足这一硬性要求。还有就是硬件环境不允许太大的模型，比如嵌入型设备等，存在着多种多样的限制。因此，模型压缩派上用场……<a id="more"></a></li>
+</ul>
+<ul>
+<li>原理(普适通用方法论，具体方法有具体原理)：LeCun是真的牛逼，89年，在那个训练网络都费劲的年代，一篇《Optimal brain damage》，提出了模型参数剪枝的思想，个人认为这是模型压缩普适的通用方法论。具体关于论文解读，移步后续链接。</li>
+</ul>
+<h2 id="2-模型压缩的研究方向"><a href="#2-模型压缩的研究方向" class="headerlink" title="2. 模型压缩的研究方向"></a>2. 模型压缩的研究方向</h2><p>先给出参考链接：</p>
+<ul>
+<li><a href="https://blog.csdn.net/wspba/article/details/75671573" target="_blank" rel="noopener">模型压缩综述</a></li>
+<li><a href="https://github.com/chester256/Model-Compression-Papers" target="_blank" rel="noopener">模型压缩论文集锦1</a></li>
+<li><a href="https://github.com/sun254/awesome-model-compression-and-acceleration" target="_blank" rel="noopener">模型压缩论文集锦2</a></li>
+</ul>
+<h3 id="2-1-核的稀疏化-规则、非规则"><a href="#2-1-核的稀疏化-规则、非规则" class="headerlink" title="2.1 核的稀疏化(规则、非规则)"></a>2.1 核的稀疏化(规则、非规则)</h3><p>核的稀疏化，是在训练过程中对权重的更新加以正则项诱导，使其更加稀疏，使大部分的权值都为0，可分为规则和非规则。规则稀疏化后，裁剪起来更加容易，尤其是对im2col的矩阵操作，效率更高；而非规则稀疏化后，参数需要特定的存储方式，或者需要平台上稀疏矩阵操作库的支持。</p>
+<ul>
+<li><p>Learning Structured Sparsity in Deep Neural Networks：在网络的目标函数上增加了group lasso的限制项，可以实现filter级与channel级以及shape级稀疏化。(规则)</p>
+</li>
+<li><p>Dynamic Network Surgery for Efficient DNNs：pruning/splicing，pruning 就是将认为不重要的weight裁掉，但是往往无法直观的判断哪些weight是否重要，因此在这里增加了一个splicing的过程，将哪些重要的被裁掉的weight再恢复回来。通过在W上增加一个T来实现，T为一个2值矩阵，起到的相当于一个mask的功能，当某个位置为1时，将该位置的weight保留，为0时裁剪。在训练过程中通过一个可学习mask将weight中真正不重要的值剔除，从而使得weight变稀疏。由于在删除一些网络的连接，会导致网络其他连接的重要性发生改变，所以通过优化最小损失函数来训练删除后的网络比较合适。(非规则)</p>
+</li>
+<li><p>Training Skinny Deep Neural Networks with Iterative Hard Thresholding Methods：通过训练一个稀疏度高的网络来降低模型的运算量，通过在网络的损失函数中增加一个关于W的L0范式可以降低W的稀疏度，但是L0范式就导致这是一个N-P难题。先正常训练网络s1轮，然后Ok(W)表示选出W中数值最大的k个数，而将剩下的值置为0，supp(W,k)表示W中最大的k个值的序号，继续训练s2轮，仅更新非0的W，然后再将之前置为0的W放开进行更新，继续训练s1轮，这样反复直至训练完毕。同样也是对参数进行诱导的方式，边训练边裁剪，先将认为不重要的值裁掉，再通过一个restore的过程将重要却被误裁的参数恢复回来。(非规则)</p>
+</li>
+</ul>
+<h3 id="2-2-模型剪裁-规则、非规则"><a href="#2-2-模型剪裁-规则、非规则" class="headerlink" title="2.2 模型剪裁(规则、非规则)"></a>2.2 模型剪裁(规则、非规则)</h3><p>对训练好的模型进行裁剪，是目前模型压缩中使用最多的方法，通常是寻找一种有效的评判手段，来判断参数的重要性，将不重要的连接或者滤波器进行裁剪来减少模型的冗余，也分为规则和非规则方式。关键在于评判手段，如基于量级的裁剪方式，用weight值的大小来评判其重要性；基于filter中激活为0的值的数量等……</p>
+<ul>
+<li><p>An Entropy-based Pruning Method for CNN Compression：基于熵值裁剪，利用熵值判定filter的重要性。 将每一层的输出通过一个Global average Pooling将feature map转换为一个长度为c（filter数量）的向量，对于n张图像可以得到一个n*c的矩阵，对于每一个filter，将它分为m个bin，统计每个bin的概率，然后计算它的熵值，利用熵值来判定filter的重要性，再对不重要的filter进行裁剪，在每一层裁剪过后只使用很少的训练步骤来恢复性能，能够有效的避免模型进入到局部最优。</p>
+</li>
+<li><p>Designing Energy-Efficient Convolutional Neural Networks using Energy-Aware Pruning：考虑到模型的带宽以及能量的消耗，从能量利用率上最大限度的裁剪模型，提出基于能量效率的裁剪方式。</p>
+</li>
+<li><p>Coarse Pruning of Convolutional Neural Networks with Random Masks：采取随机裁剪，对每一种随机方式统计模型性能，确定局部最优的裁剪方式。方法简单粗暴，看起来也比较有效，没有考虑每一层对于裁剪的敏感性，也没有评价参数的重要性，可能需要尝试多个mask才能得到较好的结果。</p>
+</li>
+<li><p>Pruning Convolutional Neural Networks for Resource Efficient Transfer Learning Inference：将裁剪问题当做一个组合优化问题：从众多的权重参数中选择一个最优的组合B，使得被裁剪的模型的代价函数的损失最小。OBD的思路，但是OBD需要求二阶导数，实现起来很难，本文提出Taylor expansion方法可以很好的解决这个问题。</p>
+</li>
+</ul>
+<h3 id="2-3-知识蒸馏-迁移学习"><a href="#2-3-知识蒸馏-迁移学习" class="headerlink" title="2.3 知识蒸馏(迁移学习)"></a>2.3 知识蒸馏(迁移学习)</h3><ul>
+<li><p>Distilling the Knowledge in a Neural Network：有很好性能的教师网络，而学生网络的训练含有两个目标：一个是hard target，即原始的目标函数，为小模型的类别概率输出与label真值的交叉熵；另一个为soft target，为小模型的类别概率输出与大模型的类别概率输出的交叉熵，将hard和soft的target通过加权平均来作为学生网络的目标函数。</p>
+</li>
+<li><p>Paying More Attention to Attention: Improving the Performance of Convolutional Neural Networks via Attention Transfer ：使用复杂网络中能够提供视觉相关位置信息的Attention map来监督小网络的学习，并且结合了低、中、高三个层次的特征。</p>
+</li>
+</ul>
+<h3 id="2-4-量化-二值化"><a href="#2-4-量化-二值化" class="headerlink" title="2.4 量化(二值化)"></a>2.4 量化(二值化)</h3><ul>
+<li><p>Quantized Neural Networks: Training Neural Networks with Low Precision Weights and Activations：引入低精度的权重和激活，并且被用于计算参数梯度。前馈过程利用bit-wise运算代替代数运算，QNNs极大减少内存大小和访问次数以及计算资源的消耗。用1个bit权重和两个bit的激活量化 AlexNet，在ImageNet datasets上取得51% top-1 accuracy.</p>
+</li>
+<li><p>Binarized Neural Networks: Training Neural Networks with Weights and Activations Constrained to +1 or −1: 引入二值化的权重和激活，并且被用于计算参数梯度。前馈过程利用bit-wise运算代替代数运算，极大减少内存大小和访问次数以及计算资源的消耗。(NIPS16)</p>
+</li>
+<li><p>(一个作者写的两篇摘要出奇地一样。。。。。。)</p>
+</li>
+</ul>
+<h3 id="2-5-低秩分解"><a href="#2-5-低秩分解" class="headerlink" title="2.5 低秩分解"></a>2.5 低秩分解</h3><ul>
+<li><p>Coordinating Filters for Faster Deep Neural Networks(ICCV 17): 对滤波器(卷积核)做近似矩阵分解，将权重信息映射到低秩空间，如用多个基向量表示其余向量，做矩阵压缩。</p>
+</li>
+<li><p><a href="https://www.cnblogs.com/missidiot/p/9869182.html" target="_blank" rel="noopener">低秩近似参考链接</a></p>
+</li>
+</ul>
+<h3 id="2-6-精细的模型设计"><a href="#2-6-精细的模型设计" class="headerlink" title="2.6 精细的模型设计"></a>2.6 精细的模型设计</h3><ul>
+<li><p>MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications</p>
+</li>
+<li><p>Aggregated Residual Transformations for Deep Neural Networks</p>
+</li>
+<li><p>ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices</p>
+</li>
+<li><p>各种花样的拆分、分组，随机合并，“Group”很重要！！！</p>
+</li>
+</ul>
+<h2 id="3-模型压缩现有的开源工程技术"><a href="#3-模型压缩现有的开源工程技术" class="headerlink" title="3. 模型压缩现有的开源工程技术"></a>3. 模型压缩现有的开源工程技术</h2><h3 id="3-1-Deep-Compression"><a href="#3-1-Deep-Compression" class="headerlink" title="3.1 Deep Compression:"></a>3.1 Deep Compression:</h3><ul>
+<li><p>Compressing Deep Neural Networks with Pruning, Trained Quantization and Huffman Coding(经典之作)</p>
+</li>
+<li><p>通过只学习重要连接，来修剪网络；量化重要的共享权重；应用哈夫曼编码</p>
+</li>
+<li><p>剪枝，连接数量被减少9x到13x，量化每个连接的表示位数从32将到5</p>
+</li>
+<li><p>在ImageNet数据集上， AlexNet被减少了35x，从240MB减少到6.9MB，准确率上没有任何损失</p>
+</li>
+<li><p>Github 上已实现各种相应版本的代码：<a href="https://github.com/hiteshvaidya/Model-Compression" target="_blank" rel="noopener">Tensorflow版</a>、<a href="https://github.com/jack-willturner/DeepCompression-PyTorch" target="_blank" rel="noopener">pyTorch版</a>、<a href="https://github.com/may0324/DeepCompression-caffe" target="_blank" rel="noopener">caffe版</a></p>
+</li>
+</ul>
+<h3 id="3-2-Learn2Compress"><a href="#3-2-Learn2Compress" class="headerlink" title="3.2 Learn2Compress"></a>3.2 Learn2Compress</h3><ul>
+<li><p><a href="https://ai.googleblog.com/2018/05/custom-on-device-ml-models.html" target="_blank" rel="noopener">Learn2Compress</a>使用多种神经网络优化和压缩技术，包括：</p>
+</li>
+<li><p>通过移除对预测作用最小的权重和计算，对模型进行剪枝，这将对稀疏的输入输出模型十分有效，可以将模型压缩2x，经预训练后能达到原始模型97%的精度；</p>
+</li>
+<li><p>训练阶段运用量化技术特别有效，通过减少模型权重和激活的位数，提高推断速度。如，用8位的固定的表示取代浮点数，可以加速模型推断，减少乘法计算，进一步压缩模型大小4x；</p>
+</li>
+<li><p>知识蒸馏，遵循教师-学生网络策略。</p>
+</li>
+</ul>
+<h3 id="3-3-PaddleSlim"><a href="#3-3-PaddleSlim" class="headerlink" title="3.3 PaddleSlim"></a>3.3 PaddleSlim</h3><ul>
+<li><p><a href="https://www.jiqizhixin.com/articles/2019-05-07-12" target="_blank" rel="noopener">来自机器之心的介绍文章</a></p>
+</li>
+<li><p>PaddleSlim 是百度飞桨(PaddlePaddle)联合视觉技术部发布的模型压缩工具库，除了支持传统的网络剪枝、参数量化和知识蒸馏等方法外，还支持最新的神经网络结构搜索(NAS)和自动模型压缩技术。</p>
+</li>
+<li><p><a href="https://github.com/PaddlePaddle/models/tree/v1.4/PaddleSlim" target="_blank" rel="noopener">github工程地址</a></p>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/36897723.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/643121.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/163/4947848.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='https://link.hhtjim.com/163/617492.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='https://link.hhtjim.com/163/399367220.mp3'></li>
+                        
+                    
+                        
+                            <li title='5' data-url='https://link.hhtjim.com/163/26102241.mp3'></li>
+                        
+                    
+                        
+                            <li title='6' data-url='https://link.hhtjim.com/163/444951.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
