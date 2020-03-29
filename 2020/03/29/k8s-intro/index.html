@@ -99,6 +99,26 @@ Kubernetes：面向,">
 <p><img src="/images/K8s_app_mode_change.jpeg" alt="image-20200213115547509"></p>
 <p>变迁趋势：应用部署运行更敏捷、更自动化、更有效率、更低成本；开发者更聚焦于应用本身。</p>
 <p>Kubernetes 面向云原生应用的新“云平台”，是以Google内部容器编排管理平台Borg为原型的开源实现，一个容器编排管理调度平台、一个微服务支撑平台、一个可移植的“云平台”</p>
+<p>功能实现角度——容器编排管理调度平台：</p>
+<ul>
+<li>pod，controllers,configmap,secret等；</li>
+<li>资源配额与分配管理；</li>
+<li>健康检查，自愈，伸缩，滚动升级。</li>
+</ul>
+<p>微服务支撑平台：</p>
+<ul>
+<li>服务发现，服务编排，路由支撑</li>
+<li>快速部署，自动负载均衡</li>
+<li>对有状态服务的支持</li>
+</ul>
+<p>可移植的“云平台”：</p>
+<ul>
+<li>docker将k8s集成到调度引擎等等，k8s成为通用层，新可移植层，新“云平台”</li>
+<li>为用户提供简单一致的应用部署，伸缩，管理机制；</li>
+<li>云上应用可以跨云迁移或混用云供应商。</li>
+</ul>
+<p>生态圈上，K8s成熟先进，传统云供应商全面支持；云应用上先进的Pod，Controllers管理模式、支持微服务抽象、服务注册，发现和自动负载均衡，K8s都有其强大优势。</p>
+<p>Kubernetes：传统云平台上的“Linux”，对应用上云的强大功能支撑</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
