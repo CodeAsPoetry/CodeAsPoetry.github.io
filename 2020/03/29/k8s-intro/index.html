@@ -121,8 +121,80 @@ Kubernetes：面向,">
 <p>Kubernetes：传统云平台上的“Linux”，对应用上云的强大功能支撑</p>
 <p>K8s Demo ：</p>
 <p><img src="/images/hello_k8s.jpeg" alt="image"></p>
+<p>部署节点设置：</p>
 <p><img src="/images/k8s_demo.jpeg" alt="image"></p>
 <p>Service 部署、Deployment 部署、请求的自动负载均衡、服务伸缩、服务版本升级及回退</p>
+<p>Kubernetes架构与组件：</p>
+<p>Kubernetes架构：</p>
+<p><img src="/images/k8s_struct.jpeg" alt="image"></p>
+<p>Master(K8S的Pod集群的控制平面)：</p>
+<ul>
+<li>所有集群的控制命令都会传递到master组件并执行</li>
+<li>每个k8s的集群都至少有一套master组件</li>
+<li>每个master组件都包括api server, scheduler,controller manager三个组件和一个etcd配置中心数据库</li>
+</ul>
+<p>组件API Server：</p>
+<ul>
+<li>集群控制的唯一入口，是提供 Kubernetes 集群控制 RESTful API 的核心组件</li>
+<li>集群内各个组件之间数据交互和通信的中枢</li>
+<li>提供集群控制的安全机制(身份认证、授权以及 admission control)</li>
+</ul>
+<p>组件Scheduler：</p>
+<ul>
+<li>通过API Server的Watch接口监听新建Pod副本信息，并通过调度算法为该Pod 选择一个最合适的Node</li>
+<li>支持自定义调度算法 provider</li>
+<li>默认调度算法内置预选策略和优选策略，决策考量资源需求、服务质量、软硬件约束、亲缘性、数据局部性等指标参数</li>
+</ul>
+<p>组件ControllerManager：</p>
+<ul>
+<li><p>集群内各种资源controller的核心管理者</p>
+</li>
+<li><p>针对每一种具体的资源，都有相应的controller</p>
+</li>
+<li><p>保证其下管理的每个Controller所对应的资源始终处于“期望状态”</p>
+</li>
+<li><pre><code>每个Controller的逻辑
+for {
+        获取资源期望状态
+        获取资源当前状态
+        改变：当前状态 -&gt; 期望状态
+}
+</code></pre></li>
+</ul>
+<p>组件Etcd：</p>
+<ul>
+<li>Kubernetes 集群的主数据库，存储着所有资源对象以及状态</li>
+<li>默认与Master组件部署在一个Node上</li>
+<li>Etcd的数据变更都是通过API Server进行</li>
+</ul>
+<p>Node组件：</p>
+<ul>
+<li>Kubernetes集群由多个Node共同承担工作负载，Pod被分配到某个具体的Node上执行</li>
+<li>Kubernetes通过node controller对node资源进行管理。支持动态在集群中添加或删除Node</li>
+<li>每个集群Node上都会部署Kubelet和Kube-proxy两个组件</li>
+</ul>
+<p>组件Kubelet：</p>
+<ul>
+<li>位于集群中每个Node上的非容器形式的服务进程组件，Master和node之间的桥梁</li>
+<li>处理Master下发到本Node上的Pod创建、启停等管理任务，向API Server注册Node信息</li>
+<li>监控本Node上容器和节点资源情况，并定期向Master汇报节点资源占用情况</li>
+</ul>
+<p>组件Kube-proxy</p>
+<ul>
+<li>Service 抽象概念的实现，将到Service的请求按策略(负载均衡)算法分发到后端Pod(Endpoint)上</li>
+<li>默认使用iptables mode实现</li>
+<li>支持nodeport模式，实现从外部访问集群内的service</li>
+</ul>
+<p>Kubernetes 对象，一种持久化的、用于表示集群状态的实体</p>
+<ul>
+<li>一种声明式的意图的记录，一般使用yaml文件描述对象</li>
+<li>Kubernetes集群使用Kubernets对象来表示集群的状态</li>
+<li>通过API/kubectl管理Kubernetes对象</li>
+</ul>
+<p>Kubernetes对象模型：</p>
+<p><img src="/images/k8s_object_model.jpeg" alt="image"></p>
+<p>常用Metadata属性：Name和UID、Namespace、Label、Annotations</p>
+<p>Pod、Service、Controllers(ReplicaSet、Deployment、StatefulSet、DaemonSet、ConfigMap、Secret)</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
