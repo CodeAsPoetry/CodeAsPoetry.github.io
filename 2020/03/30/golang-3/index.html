@@ -143,7 +143,13 @@
 <li>select：随机从不同的 chan 里面读取数据</li>
 </ul>
 </li>
-<li></li>
+<li>协程同步<ul>
+<li>系统工具 sync.waitgroup</li>
+<li>Add(delta int) 添加协程记录</li>
+<li>Done() 移除协程记录</li>
+<li>Wait() 同步等待所有记录的协程全部结束</li>
+</ul>
+</li>
 </ol>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
