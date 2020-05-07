@@ -1,1565 +1,824 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next muse use-motion" lang="en">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-<meta name="generator" content="Hexo 4.2.0">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
-
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
-
-
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.3.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    save_scroll: false,
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    }
-  };
-</script>
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="CodeAsPoetry">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
-<meta property="og:site_name" content="CodeAsPoetry">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Chengjie Pang">
-<meta name="twitter:card" content="summary">
-  <link rel="canonical" href="http://yoursite.com/page/6/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: true,
-    isPost: false,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>CodeAsPoetry</title>
+  <meta charset="utf-8">
   
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    CodeAsPoetry</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
+  
+  
+<script src="/js/pace.min.js"></script>
 
+<meta name="generator" content="Hexo 4.2.0"></head>
 
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
-  <div class="container sidebar-position-left">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">CodeAsPoetry</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<body>
+<main class="content">
+  <section class="jumbotron">
+  <div class="video">
+    
+      <div class="video-frame">
+        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+      </div>
+    
+    <div class="video-media">
+      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
+             poster="/images/ocean/ocean.png" x5-video-player-type="h5">
+        <source src="/images/ocean/ocean.mp4" type="video/mp4">
+        <source src="/images/ocean/ocean.ogv" type="video/ogg">
+        <source src="/images/ocean/ocean.webm" type="video/webm">
+        <p>Your user agent does not support the HTML5 Video element.</p>
+      </video>
+      <div class="video-overlay"></div>
     </div>
-        <p class="site-subtitle">working, reading, writing, traveling...</p>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">CodeAsPoetry</a></h1>
+      <p>working, reading, writing, traveling...</p>
+      <div><img src="/images/hexo-inverted.svg" class="brand" alt="CodeAsPoetry"></div>
+    </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+
+<div id="landingpage">
+  <section class="outer">
+    <article class="articles">
       
+      <h1 class="page-type-title"></h1>
+      
+        
+          <article id="post-ALBERT" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/10/17/ALBERT/">ALBERT A Lite BERT for Self-supervised Learning of Language Representations</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/10/17/ALBERT/" class="article-date">
+  <time datetime="2019-10-17T08:06:26.000Z" itemprop="datePublished">2019-10-17</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
 
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-      
-      
-      
-        
-        <li class="menu-item menu-item-home">
-      
-    
+                                            
 
-    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&gt;Home</a>
+                                                
+                                                    <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在预训练自然语言特征表示阶段，增加模型的尺寸大小通常会导致在下游任务的性能提升。然而，在某些时候，由于GPU/TPU内存的限制，更长的训练时间和不可预见的性能退化，都使模型尺寸的增大变得相当困难。为了解决这个问题，我们提出两个减少参数的技术，来降低内存消费和增加BERT的训练速度。综合经验实验证据表明我们所提的方法可以产生相对原始BERT来说，尺寸压缩更好的模型。
+                                                        
+                                                            <a class="article-more-link" href="/2019/10/17/ALBERT/">
+                                                                Read More...
+                                                            </a>
+                                                            
+                                                                
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/10/17/ALBERT/" data-id="ck81kmz240000ky4p3ogn30oz" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag">论文笔记</a></li></ul>
 
-  </li>
-  </ul>
+                                    </footer>
 
-    
-
-</nav>
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content page-home">
-            
-  <section id="posts" class="posts-expand">
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/17/ALBERT/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
-
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/10/17/ALBERT/" class="post-title-link" itemprop="url">ALBERT A Lite BERT for Self-supervised Learning of Language Representations</a>
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-10-17 16:06:26" itemprop="dateCreated datePublished" datetime="2019-10-17T16:06:26+08:00">2019-10-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在预训练自然语言特征表示阶段，增加模型的尺寸大小通常会导致在下游任务的性能提升。然而，在某些时候，由于GPU/TPU内存的限制，更长的训练时间和不可预见的性能退化，都使模型尺寸的增大变得相当困难。为了解决这个问题，我们提出两个减少参数的技术，来降低内存消费和增加BERT的训练速度。综合经验实验证据表明我们所提的方法可以产生相对原始BERT来说，尺寸压缩更好的模型。
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/10/17/ALBERT/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-DistillBERT" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/10/10/DistillBERT/">DistillBERT, a distilled version of BERT smaller, faster, cheaper and lighter</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/10/10/DistillBERT/" class="article-date">
+  <time datetime="2019-10-10T09:03:33.000Z" itemprop="datePublished">2019-10-10</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/DistillBERT/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/10/10/DistillBERT/" class="post-title-link" itemprop="url">DistillBERT, a distilled version of BERT smaller, faster, cheaper and lighter</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+                                                
+                                                    <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>尽管在自然语言处理领域中从大规模的预训练模型中迁移学习越来越普遍，但在实时并且/或者计算受限的约束下，训练和推断的负担依然很具有挑战。在这里，我们提出一个预训练更小的通用语言表征模型的方法，称为“蒸馏BERT”，它可以像它的巨大的同伴模型一样，被微调到广泛的任务中，且得到很好的性能。
+                                                        
+                                                            <a class="article-more-link" href="/2019/10/10/DistillBERT/">
+                                                                Read More...
+                                                            </a>
+                                                            
+                                                                
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/10/10/DistillBERT/" data-id="ck81kmz2g000aky4p9r2a9e9g" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag">论文笔记</a></li></ul>
 
-              
-                
-              
+                                    </footer>
 
-              <time title="Created: 2019-10-10 17:03:33" itemprop="dateCreated datePublished" datetime="2019-10-10T17:03:33+08:00">2019-10-10</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>尽管在自然语言处理领域中从大规模的预训练模型中迁移学习越来越普遍，但在实时并且/或者计算受限的约束下，训练和推断的负担依然很具有挑战。在这里，我们提出一个预训练更小的通用语言表征模型的方法，称为“蒸馏BERT”，它可以像它的巨大的同伴模型一样，被微调到广泛的任务中，且得到很好的性能。
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/10/10/DistillBERT/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-TinyBERT" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/10/09/TinyBERT/">TINYBERT Distilling BERT for Natural Language Understanding</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/10/09/TinyBERT/" class="article-date">
+  <time datetime="2019-10-09T07:20:01.000Z" itemprop="datePublished">2019-10-09</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/TinyBERT/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/10/09/TinyBERT/" class="post-title-link" itemprop="url">TINYBERT Distilling BERT for Natural Language Understanding</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+                                                
+                                                    <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2>
+                                                        
+                                                            <a class="article-more-link" href="/2019/10/09/TinyBERT/">
+                                                                Read More...
+                                                            </a>
+                                                            
+                                                                
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/10/09/TinyBERT/" data-id="ck81kmz2q0016ky4p0xy21ria" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag">论文笔记</a></li></ul>
 
-              
-                
-              
+                                    </footer>
 
-              <time title="Created: 2019-10-09 15:20:01" itemprop="dateCreated datePublished" datetime="2019-10-09T15:20:01+08:00">2019-10-09</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/10/09/TinyBERT/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-ckpt2pb" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/09/17/ckpt2pb/">Tensoflow预训练模型ckpt转成pb格式</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/09/17/ckpt2pb/" class="article-date">
+  <time datetime="2019-09-17T09:09:38.000Z" itemprop="datePublished">2019-09-17</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/">工程技术</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/ckpt2pb/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/09/17/ckpt2pb/" class="post-title-link" itemprop="url">Tensoflow预训练模型ckpt转成pb格式</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+                                                
+                                                                    
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/09/17/ckpt2pb/" data-id="ck81kmz2y0023ky4p0wv3ftnc" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E5%9E%8B%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/" rel="tag">模型格式转换</a></li></ul>
 
-              
-                
-              
+                                    </footer>
 
-              <time title="Created: 2019-09-17 17:09:38" itemprop="dateCreated datePublished" datetime="2019-09-17T17:09:38+08:00">2019-09-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">工程技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            
-          
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-tf2pytorch" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/09/17/tf2pytorch/">预训练特定模型Tensorflow格式与pyTorch格式互转</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/09/17/tf2pytorch/" class="article-date">
+  <time datetime="2019-09-17T08:59:36.000Z" itemprop="datePublished">2019-09-17</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/">工程技术</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/17/tf2pytorch/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/09/17/tf2pytorch/" class="post-title-link" itemprop="url">预训练特定模型Tensorflow格式与pyTorch格式互转</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+                                                
+                                                                    
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/09/17/tf2pytorch/" data-id="ck81kmz3m0047ky4p09zo25dy" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E5%9E%8B%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/" rel="tag">模型格式转换</a></li></ul>
 
-              
-                
-              
+                                    </footer>
 
-              <time title="Created: 2019-09-17 16:59:36" itemprop="dateCreated datePublished" datetime="2019-09-17T16:59:36+08:00">2019-09-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">工程技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            
-          
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-MT-DNNvKD" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/09/16/MT-DNNvKD/">Improving Multi-Task Deep Neural Networks via Knowledge Distillation for Natural Language Understanding</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/09/16/MT-DNNvKD/" class="article-date">
+  <time datetime="2019-09-16T06:35:51.000Z" itemprop="datePublished">2019-09-16</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/MT-DNNvKD/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/09/16/MT-DNNvKD/" class="post-title-link" itemprop="url">Improving Multi-Task Deep Neural Networks via Knowledge Distillation for Natural Language Understanding</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+                                                
+                                                    <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>该论文探索了使用知识蒸馏来提升从多个NLU任务中学习文本特征表示的多任务深度神经网络(MT-DNN)模型[文献2019]。尽管集成学习可以提升模型性能，但是部署一套像多个MT-DNN这样巨大的模型集合是相当地昂贵。这里，我们在多任务学习设置中应用知识蒸馏方法[文献 Hinton等人，2015]。对于每个任务，我们训练一个表现优于任何单一模型、由多个不同的MT-DNN(作为教师)构成的集合，然后通过多任务学习从这些集合中的‘教师们’蒸馏知识，训练一个单个的MT-DNN(作为学生)。
+                                                        
+                                                            <a class="article-more-link" href="/2019/09/16/MT-DNNvKD/">
+                                                                Read More...
+                                                            </a>
+                                                            
+                                                                
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/09/16/MT-DNNvKD/" data-id="ck81kmz2l000sky4pazaj5q5s" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag">论文笔记</a></li></ul>
 
-              
-                
-              
+                                    </footer>
 
-              <time title="Created: 2019-09-16 14:35:51" itemprop="dateCreated datePublished" datetime="2019-09-16T14:35:51+08:00">2019-09-16</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>该论文探索了使用知识蒸馏来提升从多个NLU任务中学习文本特征表示的多任务深度神经网络(MT-DNN)模型[文献2019]。尽管集成学习可以提升模型性能，但是部署一套像多个MT-DNN这样巨大的模型集合是相当地昂贵。这里，我们在多任务学习设置中应用知识蒸馏方法[文献 Hinton等人，2015]。对于每个任务，我们训练一个表现优于任何单一模型、由多个不同的MT-DNN(作为教师)构成的集合，然后通过多任务学习从这些集合中的‘教师们’蒸馏知识，训练一个单个的MT-DNN(作为学生)。
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/16/MT-DNNvKD/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-MT-DNN" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/09/16/MT-DNN/">Multi-Task Deep Neural Networks for Natural Language Understanding</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/09/16/MT-DNN/" class="article-date">
+  <time datetime="2019-09-16T06:35:20.000Z" itemprop="datePublished">2019-09-16</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/MT-DNN/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/09/16/MT-DNN/" class="post-title-link" itemprop="url">Multi-Task Deep Neural Networks for Natural Language Understanding</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+                                                
+                                                    <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在论文中，我们提出一个多任务深度神经网络(MT-DNN) 用于从多个自然语言理解(NLU) 任务中学习特征表达。MT-DNN 不仅利用了大量的跨任务的数据，而且从正则化效应中获益，这使得模型可以学到泛化性更好的特征表达，以便有助于适应新任务和新领域。MT-DNN通过引入以“BERT”闻名的预训练双向transformer语言模型，扩展了之前在文献[2015]提出的模型。
+                                                        
+                                                            <a class="article-more-link" href="/2019/09/16/MT-DNN/">
+                                                                Read More...
+                                                            </a>
+                                                            
+                                                                
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/09/16/MT-DNN/" data-id="ck81kmz2n000yky4p4ix180he" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag">论文笔记</a></li></ul>
 
-              
-                
-              
+                                    </footer>
 
-              <time title="Created: 2019-09-16 14:35:20" itemprop="dateCreated datePublished" datetime="2019-09-16T14:35:20+08:00">2019-09-16</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在论文中，我们提出一个多任务深度神经网络(MT-DNN) 用于从多个自然语言理解(NLU) 任务中学习特征表达。MT-DNN 不仅利用了大量的跨任务的数据，而且从正则化效应中获益，这使得模型可以学到泛化性更好的特征表达，以便有助于适应新任务和新领域。MT-DNN通过引入以“BERT”闻名的预训练双向transformer语言模型，扩展了之前在文献[2015]提出的模型。
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/16/MT-DNN/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-alterTfVar" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/09/09/alterTfVar/">修改ckpt模型中的参数名或者参数</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/09/09/alterTfVar/" class="article-date">
+  <time datetime="2019-09-09T10:55:33.000Z" itemprop="datePublished">2019-09-09</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/">工程技术</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/09/alterTfVar/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/09/09/alterTfVar/" class="post-title-link" itemprop="url">修改ckpt模型中的参数名或者参数</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+                                                
+                                                    <h2 id="1-动机"><a href="#1-动机" class="headerlink" title="1. 动机"></a>1. 动机</h2><p>对基于BERT的模型进行剪头实验，需要先在多注意头机制中，引入mask，将要被剪的头先mask掉，用 0 代替。这就需要对已经训练好的模型在计算流图上进行改动。本质上是要对计算流图中的特定张量的特定维度加以修改，并生成改动过后的新的模型，以便在性能上与原模型加以比较。所以，笔者就需要解决 修改ckpt模型中的参数名或者参数 这个问题。
+                                                        
+                                                            <a class="article-more-link" href="/2019/09/09/alterTfVar/">
+                                                                Read More...
+                                                            </a>
+                                                            
+                                                                
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/09/09/alterTfVar/" data-id="ck81kmz2u001lky4pf3hrdkgm" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BF%AE%E6%94%B9tensorflow%E5%8F%98%E9%87%8F%E5%8F%8A%E5%8F%98%E9%87%8F%E5%90%8D/" rel="tag">修改tensorflow变量及变量名</a></li></ul>
 
-              
-                
-              
+                                    </footer>
 
-              <time title="Created: 2019-09-09 18:55:33" itemprop="dateCreated datePublished" datetime="2019-09-09T18:55:33+08:00">2019-09-09</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">工程技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="1-动机"><a href="#1-动机" class="headerlink" title="1. 动机"></a>1. 动机</h2><p>对基于BERT的模型进行剪头实验，需要先在多注意头机制中，引入mask，将要被剪的头先mask掉，用 0 代替。这就需要对已经训练好的模型在计算流图上进行改动。本质上是要对计算流图中的特定张量的特定维度加以修改，并生成改动过后的新的模型，以便在性能上与原模型加以比较。所以，笔者就需要解决 修改ckpt模型中的参数名或者参数 这个问题。
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/09/alterTfVar/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-pocketflowLearn" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/09/09/pocketflowLearn/">pocketflow 学习</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/09/09/pocketflowLearn/" class="article-date">
+  <time datetime="2019-09-09T10:55:33.000Z" itemprop="datePublished">2019-09-09</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/">工程技术</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/09/pocketflowLearn/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/09/09/pocketflowLearn/" class="post-title-link" itemprop="url">pocketflow 学习</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
+                                                
+                                                                    <h2 id="pocketflow"><a href="#pocketflow" class="headerlink" title="pocketflow"></a>pocketflow</h2>
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/09/09/pocketflowLearn/" data-id="ck81kmz3j003wky4p1hnu863t" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A8%A1%E5%9E%8B%E5%89%AA%E6%9E%9D%EF%BC%8C%E6%A8%A1%E5%9E%8B%E5%8E%8B%E7%BC%A9/" rel="tag">模型剪枝，模型压缩</a></li></ul>
 
-              
-                
-              
+                                    </footer>
 
-              <time title="Created: 2019-09-09 18:55:33" itemprop="dateCreated datePublished" datetime="2019-09-09T18:55:33+08:00">2019-09-09</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">工程技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-            <h2 id="pocketflow"><a href="#pocketflow" class="headerlink" title="pocketflow"></a>pocketflow</h2>
-          
-        
-      
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+
+                
+
+</article>
         
-      </footer>
+          <article id="post-dockerNote" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/08/14/dockerNote/">Learing Docker Note</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2019/08/14/dockerNote/" class="article-date">
+  <time datetime="2019-08-14T13:04:40.000Z" itemprop="datePublished">2019-08-14</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/">工程技术</a>
   </div>
-  
-  
-  
-  </article>
 
-    
-      
+                    </div>
+                    
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/dockerNote/">
+                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
 
-        
-          <h1 class="post-title" itemprop="name headline">
-              
-              <a href="/2019/08/14/dockerNote/" class="post-title-link" itemprop="url">Learing Docker Note</a>
-            
-          </h1>
-        
+                                            
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-08-14 21:04:40" itemprop="dateCreated datePublished" datetime="2019-08-14T21:04:40+08:00">2019-08-14</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B7%A5%E7%A8%8B%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">工程技术</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>出于工作需要，将cuBERT打包成docker镜像，以便可以用来加速以BERT为原型的工程模型而无需在不同机器上部署时导致重复编译等问题，在同事的帮助下，快速上手使用Docker。因此，对于Docker，目前来看，笔者的使用能力大于对docker的深层理解能力(后续恶补一下docker的本质，深层理解一下)。</p>
+                                                
+                                                    <p>出于工作需要，将cuBERT打包成docker镜像，以便可以用来加速以BERT为原型的工程模型而无需在不同机器上部署时导致重复编译等问题，在同事的帮助下，快速上手使用Docker。因此，对于Docker，目前来看，笔者的使用能力大于对docker的深层理解能力(后续恶补一下docker的本质，深层理解一下)。</p>
 <p>以在docker上部署cuBERT模型为例，讲解整个过程中的docker命令。
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/08/14/dockerNote/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
+                                                        
+                                                            <a class="article-more-link" href="/2019/08/14/dockerNote/">
+                                                                Read More...
+                                                            </a>
+                                                            
+                                                                
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/08/14/dockerNote/" data-id="ck81kmz310027ky4p32qpcbqp" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/" rel="tag">docker</a></li></ul>
+
+                                    </footer>
+
     </div>
 
     
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
 
+                
+
+</article>
+        
+    </article>
+    
+  
+    
+      <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/page/5/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next</a>
+      </nav>
     
   </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot; aria-label&#x3D;&quot;Previous page&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot; aria-label&#x3D;&quot;Next page&quot;&gt;&lt;&#x2F;i&gt;</a>
-  </nav>
-
-
-          </div>
-          
-
-        </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Chengjie Pang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
 </div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives">
-        
-          <span class="site-state-item-count">66</span>
-          <span class="site-state-item-name">posts</span>
+
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 CodeAsPoetry</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="CodeAsPoetry"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
         </a>
-      </div>
-    
       
-      
-      <div class="site-state-item site-state-categories">
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">categories</span>
-        
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-tags">
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">36</span>
-        <span class="site-state-item-name">tags</span>
-        
-      </div>
-    
-  </nav>
-
-
-
-        </div>
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Chengjie Pang</span>
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
+</div>
+</aside>
 
-        
-
+<script src="/js/jquery-2.0.3.min.js"></script>
 
 
+<script src="/js/jquery.justifiedGallery.min.js"></script>
 
 
+<script src="/js/lazyload.min.js"></script>
 
 
-
-        
-      </div>
-    </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
-  </div>
-
-  
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-<script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
-
-
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
-
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
 
 
   
+<script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
 
 
 
 
+<script src="/js/ocean.js"></script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-    
-      
-        
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-    
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
-  
-
-  
-
-  
-
-
-  
 </body>
 </html>

@@ -1,264 +1,84 @@
 <!DOCTYPE html>
-
-
-
-
-
-<html class="theme-next muse use-motion" lang="en">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-<meta name="generator" content="Hexo 4.2.0">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.3.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.3.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.3.0" color="#222">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    BERT Pre-training of Deep Bidirectional Transformers for Language Understanding |
+    
+    CodeAsPoetry</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-<link rel="stylesheet" href="/css/main.css?v=7.3.0">
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
+  
+  
+<script src="/js/pace.min.js"></script>
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<meta name="generator" content="Hexo 4.2.0"></head>
 
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-bert" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-<script id="hexo-configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.3.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    save_scroll: false,
-    copycode: {"enable":false,"show_result":false,"style":null},
-    fancybox: false,
-    mediumzoom: false,
-    lazyload: false,
-    pangu: false,
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: 'Copy',
-      copy_success: 'Copied',
-      copy_failure: 'Copy failed'
-    }
-  };
-</script>
-
-  <meta name="description" content="摘要我们介绍了一个全新的语言表示模型BERT，这是利用Transformer双向编码表示的缩写简称。与最近的语言表示模型不同，BERT被设计为来自未标记文本的由所有层从左右两边的上下文联合决定的预训练的深度双向表示模型。因此，仅带有一个额外的输出层的预训练BERT模型可以被微调，从而在一系列广泛的任务中产生最先进的模型，比如问答和语言推理，无需大量的针对具体任务对模型架构作出修改。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="BERT Pre-training of Deep Bidirectional Transformers for Language Understanding">
-<meta property="og:url" content="http://yoursite.com/2019/08/14/bert/index.html">
-<meta property="og:site_name" content="CodeAsPoetry">
-<meta property="og:description" content="摘要我们介绍了一个全新的语言表示模型BERT，这是利用Transformer双向编码表示的缩写简称。与最近的语言表示模型不同，BERT被设计为来自未标记文本的由所有层从左右两边的上下文联合决定的预训练的深度双向表示模型。因此，仅带有一个额外的输出层的预训练BERT模型可以被微调，从而在一系列广泛的任务中产生最先进的模型，比如问答和语言推理，无需大量的针对具体任务对模型架构作出修改。">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-08-14T13:03:21.000Z">
-<meta property="article:modified_time" content="2020-03-21T11:46:54.747Z">
-<meta property="article:author" content="Chengjie Pang">
-<meta property="article:tag" content="论文笔记">
-<meta name="twitter:card" content="summary">
-  <link rel="canonical" href="http://yoursite.com/2019/08/14/bert/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
-  };
-</script>
-
-  <title>BERT Pre-training of Deep Bidirectional Transformers for Language Understanding | CodeAsPoetry</title>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      BERT Pre-training of Deep Bidirectional Transformers for Language Understanding
+    </h1>
+  
   
 
 
 
 
+            </header>
+            
 
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
-  <div class="container sidebar-position-left">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">CodeAsPoetry</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">working, reading, writing, traveling...</p>
-      
+                
+                    <div class="article-meta">
+                        <a href="/2019/08/14/bert/" class="article-date">
+  <time datetime="2019-08-14T13:03:21.000Z" itemprop="datePublished">2019-08-14</time>
+</a>
+                            
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/">自然语言处理</a>
   </div>
 
-  <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
 
 
-<nav class="site-nav">
-  
-  <ul id="menu" class="menu">
-      
-      
-      
-        
-        <li class="menu-item menu-item-home">
-      
-    
-
-    <a href="/" rel="section">&lt;i class&#x3D;&quot;menu-item-icon fa fa-fw fa-home&quot;&gt;&lt;&#x2F;i&gt; &lt;br&gt;Home</a>
-
-  </li>
-  </ul>
-
-    
-
-</nav>
-</div>
-    </header>
-
-    
 
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content page-post-detail">
-            
 
-  <div id="posts" class="posts-expand">
-    
+                                
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/bert/">
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chengjie Pang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeAsPoetry">
-    </span>
-      <header class="post-header">
+                                            
 
-        
-          <h1 class="post-title" itemprop="name headline">BERT Pre-training of Deep Bidirectional Transformers for Language Understanding
-
-            
-          </h1>
-        
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-08-14 21:03:21" itemprop="dateCreated datePublished" datetime="2019-08-14T21:03:21+08:00">2019-08-14</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-21 19:46:54" itemprop="dateModified" datetime="2020-03-21T19:46:54+08:00">2020-03-21</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">自然语言处理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>我们介绍了一个全新的语言表示模型BERT，这是利用Transformer双向编码表示的缩写简称。与最近的语言表示模型不同，BERT被设计为来自未标记文本的由所有层从左右两边的上下文联合决定的预训练的深度双向表示模型。因此，仅带有一个额外的输出层的预训练BERT模型可以被微调，从而在一系列广泛的任务中产生最先进的模型，比如问答和语言推理，无需大量的针对具体任务对模型架构作出修改。<a id="more"></a></p>
+                                                
+                                                                    <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>我们介绍了一个全新的语言表示模型BERT，这是利用Transformer双向编码表示的缩写简称。与最近的语言表示模型不同，BERT被设计为来自未标记文本的由所有层从左右两边的上下文联合决定的预训练的深度双向表示模型。因此，仅带有一个额外的输出层的预训练BERT模型可以被微调，从而在一系列广泛的任务中产生最先进的模型，比如问答和语言推理，无需大量的针对具体任务对模型架构作出修改。<a id="more"></a></p>
 <p>BERT，概念上简单，经验上有效。它在11项自然语言处理任务上保持最新的先进成果，包括将GLUE分数推高到80.5%(7.7%的绝对提高)，MultiNLI准确率达到86.7%(4.6%的绝对提升)，在SQuAD1.1版问答任务测试集上，将F1提高至93.2(1.5的绝对提高)，在SQuAD2.0版测试集上F1达到83.1(5.1的绝对提升)。</p>
 <h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h2><h2 id="2-相关工作"><a href="#2-相关工作" class="headerlink" title="2. 相关工作"></a>2. 相关工作</h2><h2 id="3-BERT"><a href="#3-BERT" class="headerlink" title="3. BERT"></a>3. BERT</h2><p>我们在这一节介绍BERT和它具体实现。我们架构中有两步：预训练和微调。在预训练阶段，模型在不同的预训练任务的未标记数据中被训练。微调阶段，BERT模型首先用预训练的参数初始化，所有的参数都会通过来自下游任务的有标记数据来微调。每一个下游任务由独立的微调模型，即使它们用同一个预训练模型初始化。图1问答示例在这节将用来作为示范用例。</p>
 <p>BERT一个显著的特点是跨越不同任务的结构统一性。在预训练模型结构和最终下游任务模型结构间有最小的差异。</p>
@@ -294,391 +114,166 @@
 <p>与预训练相比，微调成本是相对较低的。从同样的预训练模型开始，在一块云TPU上，最多花费1个小时，或者在1块GPU上花费数几小时，论文中所有实验结果都可以被重现。我们将在第4节相应部分介绍具体任务细节。更多的细节可以在附录 A.5 中加以说明。</p>
 <h2 id="4-实验"><a href="#4-实验" class="headerlink" title="4. 实验"></a>4. 实验</h2><h2 id="5-消蚀研究"><a href="#5-消蚀研究" class="headerlink" title="5. 消蚀研究"></a>5. 消蚀研究</h2><h2 id="6-结论"><a href="#6-结论" class="headerlink" title="6. 结论"></a>6. 结论</h2><p>最近由针对语言模型的迁移学习的经验表明丰富的、无监督的预训练是许多语言理解系统的重要组成部分。特别是，这些结果可以通过深度单向结构的模型使具有低资源的任务获益。我们的主要贡献是进一步扩展这些成果到深度双向结构中，允许整个同样的预训练模型能够成功地处理一整套NLP任务。</p>
 
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2019/08/14/bert/" data-id="ck81kmz2v001sky4pf3vjhjax" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag">论文笔记</a></li></ul>
+
+                                    </footer>
+
     </div>
 
     
+        
+  <nav class="article-nav">
     
-    
-        
-      
-
-      <footer class="post-footer">
+      <a href="/2019/08/14/cuBERT/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
           
-            
+            cuBERT
           
-          <div class="post-tags">
-            
-              <a href="/tags/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" rel="tag"># 论文笔记</a>
-            
-          </div>
-        
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/2019/08/08/areSixteen/" rel="next" title="Are Sixteen Heads Really Better than One">
-                  <i class="fa fa-chevron-left"></i> Are Sixteen Heads Really Better than One
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/14/cuBERT/" rel="prev" title="cuBERT">
-                  cuBERT <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
-          </div>
-        
-      </footer>
-    
-  </div>
-  
-  
-  
-  </article>
-
-  </div>
-
-
-          </div>
-          
-
         </div>
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Chengjie Pang</p>
-  <div class="site-description motion-element" itemprop="description"></div>
-</div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives">
-        
-          <span class="site-state-item-count">66</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
+      </a>
     
-      
-      
-      <div class="site-state-item site-state-categories">
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">12</span>
-        <span class="site-state-item-name">categories</span>
-        
-      </div>
     
-      
-      
-      <div class="site-state-item site-state-tags">
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">36</span>
-        <span class="site-state-item-name">tags</span>
-        
-      </div>
+      <a href="/2019/08/08/areSixteen/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">Are Sixteen Heads Really Better than One</div>
+      </a>
     
   </nav>
 
 
-
-        </div>
-      </div>
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
             
 
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-介绍"><span class="nav-text">1. 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-相关工作"><span class="nav-text">2. 相关工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-BERT"><span class="nav-text">3. BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-预训练BERT"><span class="nav-text">3.1 预训练BERT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-微调BERT"><span class="nav-text">3.2 微调BERT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-实验"><span class="nav-text">4. 实验</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-消蚀研究"><span class="nav-text">5. 消蚀研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-结论"><span class="nav-text">6. 结论</span></a></li></ol></div>
-            
+                
+                    
+                        
+                            
 
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Chengjie Pang</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
-
-        
-
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-      </div>
-
-    
-
+    <ul class="list-inline">
+      <li>&copy; 2020 CodeAsPoetry</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
   </div>
+</footer>
 
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
   
-  <script src="/lib/jquery/index.js?v=3.4.1"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-<script src="/js/utils.js?v=7.3.0"></script>
-  <script src="/js/motion.js?v=7.3.0"></script>
-
-
-  <script src="/js/schemes/muse.js?v=7.3.0"></script>
-
-
-<script src="/js/next-boot.js?v=7.3.0"></script>
-
-
-
-
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="CodeAsPoetry"></a>
+    </div>
   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
+  <ul class="nav nav-main">
     
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
       
-<script type="text/x-mathjax-config">
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
 
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
+<script src="/js/jquery-2.0.3.min.js"></script>
 
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+  
+<script src="/js/tocbot.min.js"></script>
+
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
     });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', function() {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
-  
-
-  
-
-  
+  </script>
 
 
-  
-  <script src="/js/scrollspy.js?v=7.3.0"></script>
-<script src="/js/post-details.js?v=7.3.0"></script>
+
+<script src="/js/ocean.js"></script>
 
 
 </body>
