@@ -72,16 +72,41 @@ Gamma函数推导、 [Gamma函数深入理解]、通俗理解LDA主题模型
 <a id="more"></a>
 <p>深扒主题模型LDA(隐含狄利克雷分布)时，涉及到 Beta 分布、Dirichlet 分布，其中有关 Gamma 函数，本来也不想过多纠缠，然而发现“Gamma函数”是阶乘在实数域的推广，这尼玛忍不了了，得扒开看看噻。不过我觉得我可能扒得不深，如果数学功底可以，建议对照第一个链接的博文内容从祖坟上扒。我这里以第二篇为主线。</p>
 <ul>
-<li><p>给出Wallis公式，证明略去。</p>
-<script type="math/tex; mode=display">\lim\limits_{n\to+\infty}\frac{1}{2n+1}(\frac{(2n)!!}{(2n-1)!!})^2=\frac{\pi}{2}</script><script type="math/tex; mode=display">\frac{2}{3}\cdot\frac{4}{3}\cdot\frac{4}{5}\cdot\frac{6}{5}\cdot\frac{6}{7}\cdot\frac{8}{7}\cdot\frac{8}{9}\cdot\frac{10}{9}\cdot\cdot\cdot\cdot=\frac{\pi}{4}</script><p>上式左右两边同乘$\frac{2}{1}$ ，则得到：</p>
-<script type="math/tex; mode=display">\frac{2}{1}\cdot\frac{2}{3}\cdot\frac{4}{3}\cdot\frac{4}{5}\cdot\frac{6}{5}\cdot\frac{6}{7}\cdot\frac{8}{7}\cdot\frac{8}{9}\cdot\frac{10}{9}\cdot\cdot\cdot\cdot=\frac{\pi}{2}</script></li>
+<li><p>给出公式</p>
+<script type="math/tex; mode=display">\frac{2}{3}\cdot\frac{4}{3}\cdot\frac{4}{5}\cdot\frac{6}{5}\cdot\frac{6}{7}\cdot\frac{8}{7}\cdot\frac{8}{9}\cdot\frac{10}{9}\cdot\cdot\cdot\cdot=\frac{\pi}{4}</script><p>上式左右两边同乘$\frac{2}{1}$ ，则得到：</p>
+<script type="math/tex; mode=display">\frac{2}{1}\cdot\frac{2}{3}\cdot\frac{4}{3}\cdot\frac{4}{5}\cdot\frac{6}{5}\cdot\frac{6}{7}\cdot\frac{8}{7}\cdot\frac{8}{9}\cdot\frac{10}{9}\cdot\cdot\cdot\cdot=\frac{\pi}{2}</script><p>证明略去，详见Wallis公式</p>
+<script type="math/tex; mode=display">\lim\limits_{n\to+\infty}\frac{1}{2n+1}(\frac{(2n)!!}{(2n-1)!!})^2=\frac{\pi}{2}</script></li>
 <li><p>定义函数$B_{p,q}$</p>
 <script type="math/tex; mode=display">B_{p,q}=\frac{(p+q)!}{p!q!}=\frac{1}{p!}(q+1)(q+2)...(q+p)</script><p>详细说明一下此式，</p>
 <script type="math/tex; mode=display">B_{p,q}=\frac{(p+q)!}{p!q!}=\frac{(p+q)(p+q-1)(p+q-2)...(q+1)q(q-1)...3\cdot2\cdot1}{p!q!}</script><p>上下约去$q!$ </p>
 </li>
-<li><p>令$p=1,q=\frac{1}{2}$</p>
+<li><p>令$p=1,q=\frac{1}{2}$，则有：</p>
+<script type="math/tex; mode=display">B_{p,q}=\frac{1}{1!}(\frac{1}{2}+1)=\frac{3}{2}</script><p>根据 $B_{p,q}=\frac{(p+q)!}{p!q!}$ 的对称性，可知 $B_{p,q}=B_{q,p}$  <code>(1)</code>，则有：$B_{1,\frac{1}{2}}=\frac{3}{2}=B_{\frac{1}{2},1}$</p>
+</li>
+<li><p>根据阶乘定义即可证明  $B_{p,q}$ 和 $B_{p,q-1}$ 的关系，即 $B_{p,q}=\frac{p+q}{q}B_{p,q-1}$ <code>(2)</code></p>
+</li>
+<li><p>根据<code>(1)</code>，则有：</p>
+<p> $B_{\frac{1}{2},m}=B_{m,\frac{1}{2}}=\frac{1}{m!}(\frac{1}{2}+1)(\frac{1}{2}+2)…(\frac{1}{2}+m)$ ，将$m!$展开，即有：</p>
+<script type="math/tex; mode=display">=\frac{1}{m}\frac{1}{m-1}\frac{1}{m-2}...\frac{1}{2}\cdot\frac{1}{1}\cdot(\frac{1}{2}+1)\cdot(\frac{1}{2}+2)...(\frac{1}{2}+m)</script><p>其中：$\frac{1}{m}\frac{1}{m-1}\frac{1}{m-2}…\frac{1}{2}\cdot \frac{1}{1}$，有m项，$(\frac{1}{2}+1)(\frac{1}{2}+2)…(\frac{1}{2}+m)$ 有m项，将对应变量通过乘法交换律相乘归并，得到：</p>
+<p><script type="math/tex">B_{\frac{1}{2},m}=B_{m,\frac{1}{2}}=\frac{1}{m}(\frac{1}{2}+m)...\frac{1}{2}(\frac{1}{2}+1)=\frac{2m+1}{2m}\frac{2m-1}{2m-2}...\frac{5}{4}\cdot\frac{3}{2}</script> <code>(3)</code></p>
+</li>
+<li><p>根据<code>(2)</code>，则有：</p>
+<p><script type="math/tex">B_{\frac{1}{2},m+\frac{1}{2}}=\frac{m+1}{m+\frac{1}{2}} \cdot B_{\frac{1}{2},m-1+\frac{1}{2}}=\frac{m+1}{m+\frac{1}{2}}\frac{m}{m-1+\frac{1}{2}} \cdot B_{\frac{1}{2},m-2+\frac{1}{2}}=...=\frac{2m+2}{2m+1}\cdot\frac{2m}{2m-1}...\cdot\frac{4}{3} \cdot B_{\frac{1}{2},\frac{1}{2}}</script> <code>(4)</code></p>
+</li>
+<li><p>由 <script type="math/tex">B_{p,q}=\frac{(p+q)!}{p!q!}</script> 可知 ，B是关于q递增的函数，则有：</p>
+<script type="math/tex; mode=display">B_{\frac{1}{2},m-\frac{1}{2}} < B_{\frac{1}{2},m} < B_{\frac{1}{2},m+\frac{1}{2}}</script></li>
+<li><p>对 $B_{\frac{1}{2},m+\frac{1}{2}}$ 取极限，并结合<code>(2)</code>：</p>
+<script type="math/tex; mode=display">\lim\limits_{m\to\infty}B_{\frac{1}{2},m+\frac{1}{2}}=\lim\limits_{m\to\infty}\frac{m+1}{m+\frac{1}{2}}B_{\frac{1}{2},m-\frac{1}{2}}=\lim\limits_{m\to\infty}\frac{2m+2}{2m+1}B_{\frac{1}{2},m-\frac{1}{2}}=\lim\limits_{m\to\infty}B_{\frac{1}{2},m-\frac{1}{2}}</script></li>
+<li><p>由上极限式等式，根据夹逼定理，则有</p>
+<script type="math/tex; mode=display">\lim\limits_{m\to\infty}B_{\frac{1}{2},m}=\lim\limits_{m\to\infty}B_{\frac{1}{2},m+\frac{1}{2}}</script></li>
+<li><p>由<code>(3)</code>、<code>(4)</code> 联立，得：</p>
+<script type="math/tex; mode=display">\frac{2}{B_{\frac{1}{2}, \frac{1}{2}}}=\frac{2}{1}\cdot\frac{2}{3}\cdot\frac{4}{3}\cdot\frac{4}{5} \cdot \cdot \cdot \frac{2m-2}{2m-1} \cdot \frac{2m}{2m-1} \cdot \frac{2m}{2m+1} \cdot \frac{2m+2}{2m+1} \cdot \cdot \cdot =\frac{\pi}{2}</script></li>
+<li><p>结合开篇给出的公式，和 $B_{p,q}$函数的定义：</p>
+<p>$(\frac{1}{2})!=\frac{\sqrt\pi}{2}$</p>
 </li>
 </ul>
+<p>可以尝试着将整数值为x，其阶乘值为y，在平面直角坐标系描点，用光滑曲线连接，得到目标曲线，将阶乘推广到实数域，即求出这根光滑曲线的函数表达式。好了，请出欧拉大佬，是他解决了这个问题，真的牛批，现在只是验证一下结论，至于如何从无到有解决的，可以自行研究(狗头保命)。</p>
+<p>欧拉通过研究函数 $J(e,n)=\int_{0}^{1}x^e(1-x)^ndx$，n为正整数，e为正实数，找到了解决办法。</p>
 <p>(Ps: 卧槽，写公式太费时间，先更到这儿，特么后边记录LDA学习笔记，还可能有变分推断，那特么一坨一坨的公式怕是要撸到猴年马月)</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
