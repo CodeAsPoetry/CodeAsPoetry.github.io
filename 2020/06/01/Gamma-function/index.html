@@ -107,7 +107,15 @@ Gamma函数推导、 [Gamma函数深入理解]、通俗理解LDA主题模型
 </ul>
 <p>可以尝试着将整数值为x，其阶乘值为y，在平面直角坐标系描点，用光滑曲线连接，得到目标曲线，将阶乘推广到实数域，即求出这根光滑曲线的函数表达式。好了，请出欧拉大佬，是他解决了这个问题，真的牛批，现在只是验证一下结论，至于如何从无到有解决的，可以自行研究(狗头保命)。</p>
 <p>欧拉通过研究函数 $J(e,n)=\int_{0}^{1}x^e(1-x)^ndx$，n为正整数，e为正实数，找到了解决办法。</p>
-<p>(Ps: 卧槽，写公式太费时间，先更到这儿，特么后边记录LDA学习笔记，还可能有变分推断，那特么一坨一坨的公式怕是要撸到猴年马月)</p>
+<p>先给出结论，$J(e,n)=\frac{n}{e+1}J(e+1,n-1)$ </p>
+<p>利用分部积分法，证明上述递推公式：</p>
+<p>分部积分法：$\int u(x)v^{‘}(x)dx=u(x)v(x)-\int u^{‘}(x)v(x)dx$</p>
+<script type="math/tex; mode=display">J(e,n)=\int_{0}^{1}x^e(1-x)^ndx=\int_{0}^{1}(1-x)^{n}x^edx</script><p>令 $u(x)=(1-x)^{n}$ ，$v^{‘}(x)=x^e$ ，则，$u^{‘}(x)=-n(1-x)^{n-1}$ ，$v(x)=\frac{1}{e+1} \cdot x^{e+1}$，则：</p>
+<script type="math/tex; mode=display">J(e,n)=(1-x)^{n} \cdot \frac{1}{e+1} \cdot x^{e+1}-\int_{0}^{1}(-n(1-x)^{n-1})\cdot \frac{1}{e+1} \cdot x^{e+1}dx = (1-x)^{n} \cdot \frac{1}{e+1} \cdot x^{e+1} + \int_{0}^{1}n(1-x)^{n-1}\cdot \frac{1}{e+1} \cdot x^{e+1}dx</script><p>令 $u(x)=x^e$，$v^{‘}(x)=(1-x)^{n}$，则，$u^{‘}(x)=e \cdot x^{e-1}$ ，$v(x)=-\frac{1}{n+1} (1-x)^{n+1}$，则：</p>
+<script type="math/tex; mode=display">J(e,n)=x^e \cdot (-\frac{1}{n+1} (1-x)^{n+1})-\int_{0}^{1}e \cdot x^{e-1} \cdot (-\frac{1}{n+1} (1-x)^{n+1})dx</script><p>继续：</p>
+<script type="math/tex; mode=display">J(e+1,n-1)=\int_{0}^{1}x^{e+1} \cdot (1-x)^{n-1}dx</script><p>令$u(x)=x^{e+1}$，$v^{‘}(x)=(1-x)^{n-1}$，则，$u^{‘}(x)=(e+1) \cdot x^e$ ，$v(x)=- \frac{1}{n} \cdot (1-x)^n$，则：</p>
+<script type="math/tex; mode=display">J(e+1,n-1)=x^{e+1} \cdot (- \frac{1}{n} \cdot (1-x)^n) - \int_{0}^{1} (e+1) \cdot x^e \cdot (- \frac{1}{n} \cdot (1-x)^n)dx = - x^{e+1} \cdot (\frac{1}{n} \cdot (1-x)^n) + \int_{0}^{1} (e+1) \cdot x^e \cdot (\frac{1}{n} \cdot (1-x)^n)dx</script><p>继续：</p>
+<script type="math/tex; mode=display">\frac{n}{e+1} \cdot J(e+1,n-1) = - x^{e+1} \cdot \frac{1}{e+1} \cdot (1-x)^n + \int_{0}^{1} x^e \cdot (1-x)^ndx</script><p>(Ps: 卧槽，写公式太费时间，先更到这儿，特么后边记录LDA学习笔记，还可能有变分推断，那特么一坨一坨的公式怕是要撸到猴年马月)</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
