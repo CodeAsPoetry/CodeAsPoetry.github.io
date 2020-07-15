@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>开源三元组抽取思路 - CodeAsPoetry</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    
+    <meta name="description" content="开源关系抽取工作：
+Pipeline：
+
+需要语料文本和( S、P、O)一一对应，且S、P、O均在语料文本中
+将(S、P、O)送入搜索引擎，抓取搜索结果首页，将包含了S、P、O的句子作为样本扩充，约,"> 
+    <meta name="author" content="Chengjie Pang"> 
+    <link rel="alternative" href="atom.xml" title="CodeAsPoetry" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">CodeAsPoetry</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">开源三元组抽取思路</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">开源三元组抽取思路</h1>
+        <div class="stuff">
+            <span>七月 15, 2020</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <p>开源关系抽取工作：</p>
+<p>Pipeline：</p>
+<ul>
+<li><p>需要语料文本和( S、P、O)一一对应，且S、P、O均在语料文本中</p>
+<p>将(S、P、O)送入搜索引擎，抓取搜索结果首页，将包含了S、P、O的句子作为样本扩充，约11万的SPO元组经搜索、抓取、清洗，获取约6000左右可以用于模型训练的数据。</p>
+</li>
+</ul>
+<p>抓取并清洗数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">抓取：baidu_scrapy&#x2F;scrapy_corpus_v1.py</span><br><span class="line">清洗：baidu_scrapy&#x2F;filter_structured_data.py</span><br></pre></td></tr></table></figure>
+<p>解决方案一： </p>
+<p>直接找出S、P、O</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">标注数据：bert_extract&#x2F;sub_pred_obj_data_manager.py</span><br><span class="line">训练模型：bert_extract&#x2F;run_sub_pred_obj.py</span><br><span class="line">得到测试集预测结果：bert_extract&#x2F;token_label_predictions.txt</span><br></pre></td></tr></table></figure>
+<p>解决方案二：</p>
+<ol>
+<li><p>将1.4亿三元组对应的关系P构成字典，BERT序列标注出给定文本中所有的关系P</p>
+</li>
+<li><p>将关系 P 和文本送入 BERT，序列标注出 S、O</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">标注P：pipeline&#x2F;pred_data_manager.py</span><br><span class="line">标注S、O：pipeline&#x2F;sub_obj_data_manager.py</span><br><span class="line">训练抽P模型：pipeline&#x2F;run_pred.py</span><br><span class="line">训练根据P抽S、O模型：pipeline&#x2F;run_sub_obj_according_pred.py</span><br></pre></td></tr></table></figure>
+<p> 解决方案三：</p>
+<ol>
+<li><p>BERT序列标注出给定文本中所有的S、O</p>
+</li>
+<li><p>将S、O和文本送入BERT，序列标注出 P</p>
+</li>
+</ol>
+<ul>
+<li>需要语料文本和目标( S、P、O)一一对应，S、O在语料文本中</li>
+</ul>
+<p>可以利用百度AI Studio提供的有schema约束的比赛数据</p>
+<ol>
+<li><p>BERT序列标注，得到S、O实体</p>
+</li>
+<li><p>以Text、S、O作为输入，Transformer 模型生成关系 P</p>
+</li>
+</ol>
+<p> End-to-end：</p>
+<ul>
+<li><p>借鉴远程监督思路，利用半监督算法，能够接受含有噪音数据</p>
+<p>可以利用更多的数据，文本和目标对应( S、P、O)可以有噪声</p>
+</li>
+</ul>
+<ol>
+<li><p>知识图谱三元组作嵌入、文本经过语言模型得到向量，</p>
+</li>
+<li><p>二者通过注意机制对齐</p>
+<p>图神经网络最新综述：Introduction to Graph Neural Networks(解决三元组方向、多跳、因果推理等问题)</p>
+<p>开放域命名实体抽取：Towards Open-Domain Named Entity Recognition via Neural Correction Models</p>
+</li>
+</ol>
+<p>半监督抽取关系知识：Open Relation Extraction: Relational Knowledge Transfer from Supervised Data to Unsupervised Data</p>
+<p>开放域抽取到的关系进行正则、聚类：Canonicalizing Open Knowledge Bases using Embeddings and Side Information</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/36897723.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/643121.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/163/4947848.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='https://link.hhtjim.com/163/617492.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='https://link.hhtjim.com/163/399367220.mp3'></li>
+                        
+                    
+                        
+                            <li title='5' data-url='https://link.hhtjim.com/163/26102241.mp3'></li>
+                        
+                    
+                        
+                            <li title='6' data-url='https://link.hhtjim.com/163/444951.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
