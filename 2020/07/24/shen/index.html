@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bert ckpt转pb - CodeAsPoetry</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    
+    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354,"> 
+    <meta name="author" content="Chengjie Pang"> 
+    <link rel="alternative" href="atom.xml" title="CodeAsPoetry" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">CodeAsPoetry</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Bert ckpt转pb</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Bert ckpt转pb</h1>
+        <div class="stuff">
+            <span>七月 24, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/tensorflow/" rel="tag">tensorflow</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> bert <span class="keyword">import</span> modeling</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_classification_model</span><span class="params">(bert_config, is_training, input_ids, input_mask, segment_ids, labels, num_labels)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 通过传入的训练数据，进行representation</span></span><br><span class="line">    model = modeling.BertModel(</span><br><span class="line">        config=bert_config,</span><br><span class="line">        is_training=is_training,</span><br><span class="line">        input_ids=input_ids,</span><br><span class="line">        input_mask=input_mask,</span><br><span class="line">        token_type_ids=segment_ids,</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    output_layer = model.get_pooled_output()</span><br><span class="line">    hidden_size = output_layer.shape[<span class="number">-1</span>].value</span><br><span class="line"></span><br><span class="line">    output_weights = tf.get_variable(</span><br><span class="line">        <span class="string">"output_weights"</span>, [num_labels, hidden_size],</span><br><span class="line">        initializer=tf.truncated_normal_initializer(stddev=<span class="number">0.02</span>))</span><br><span class="line"></span><br><span class="line">    output_bias = tf.get_variable(</span><br><span class="line">        <span class="string">"output_bias"</span>, [num_labels], initializer=tf.zeros_initializer())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> tf.variable_scope(<span class="string">"loss"</span>):</span><br><span class="line">        <span class="keyword">if</span> is_training:</span><br><span class="line">            <span class="comment"># I.e., 0.00000123 dropout</span></span><br><span class="line">            output_layer = tf.nn.dropout(output_layer, keep_prob=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line">        logits = tf.matmul(output_layer, output_weights, transpose_b=<span class="literal">True</span>)</span><br><span class="line">        logits = tf.nn.bias_add(logits, output_bias)</span><br><span class="line">        probabilities = tf.nn.softmax(logits, axis=<span class="number">-1</span>, name=<span class="string">"prob"</span>)</span><br><span class="line">        log_probs = tf.nn.log_softmax(logits, axis=<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> labels <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            one_hot_labels = tf.one_hot(labels, depth=num_labels, dtype=tf.float32)</span><br><span class="line">            per_example_loss = -tf.reduce_sum(one_hot_labels * log_probs, axis=<span class="number">-1</span>)</span><br><span class="line">            loss = tf.reduce_mean(per_example_loss)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            loss, per_example_loss = <span class="literal">None</span>, <span class="literal">None</span></span><br><span class="line">    <span class="keyword">return</span> loss, per_example_loss, logits, probabilities</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line"></span><br><span class="line">    max_seq_len = <span class="number">32</span></span><br><span class="line">    bert_config_file = <span class="string">'../chinese_L-12_H-768_A-12/bert_config.json'</span></span><br><span class="line">    bert_config = modeling.BertConfig.from_json_file(bert_config_file)</span><br><span class="line"></span><br><span class="line">    MODEL_PATH = <span class="string">'../chinese_L-12_H-768_A-12/model.ckpt-10'</span></span><br><span class="line"></span><br><span class="line">    input_ids_ph = tf.placeholder(</span><br><span class="line">        tf.int32, [<span class="literal">None</span>, max_seq_len], name=<span class="string">"input_ids"</span>)</span><br><span class="line">    input_mask_ph = tf.placeholder(</span><br><span class="line">        tf.int32, [<span class="literal">None</span>, max_seq_len], name=<span class="string">"input_mask"</span>)</span><br><span class="line">    segment_ids_ph = tf.placeholder(</span><br><span class="line">        tf.int32, [<span class="literal">None</span>, max_seq_len], name=<span class="string">"segment_ids"</span>)</span><br><span class="line"></span><br><span class="line">    loss, per_example_loss, logits, probabilities = create_classification_model(</span><br><span class="line">        bert_config=bert_config,</span><br><span class="line">        is_training=<span class="literal">True</span>,</span><br><span class="line">        input_ids=input_ids_ph,</span><br><span class="line">        input_mask=input_mask_ph,</span><br><span class="line">        segment_ids=segment_ids_ph,</span><br><span class="line">        labels=<span class="literal">None</span>,</span><br><span class="line">        num_labels=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">    saver = tf.train.Saver(tf.global_variables())</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line"></span><br><span class="line">        sess.run(tf.global_variables_initializer())</span><br><span class="line">        tf.global_variables_initializer().run()</span><br><span class="line">        saver_restore = tf.train.Saver(tf.global_variables())</span><br><span class="line"></span><br><span class="line">        saver_restore.restore(sess, MODEL_PATH)</span><br><span class="line"></span><br><span class="line">        export_path_base = os.path.join(<span class="string">'pb_model/'</span>, <span class="string">'sa_triple_classification'</span>)</span><br><span class="line">        export_path = os.path.join(</span><br><span class="line">            tf.compat.as_bytes(export_path_base),</span><br><span class="line">            tf.compat.as_bytes(<span class="string">"00000123"</span>)</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        tf.logging.info(<span class="string">'Exporting trained model to '</span>.format(export_path))</span><br><span class="line"></span><br><span class="line">        builder = tf.saved_model.builder.SavedModelBuilder(export_path)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 输入</span></span><br><span class="line"></span><br><span class="line">        tensor_info_input_ids_ph = tf.saved_model.utils.build_tensor_info(input_ids_ph)</span><br><span class="line">        tensor_info_input_mask_ph = tf.saved_model.utils.build_tensor_info(input_mask_ph)</span><br><span class="line">        tensor_info_segment_ids_ph = tf.saved_model.utils.build_tensor_info(segment_ids_ph)</span><br><span class="line"></span><br><span class="line">        tensor_info_probabilities = tf.saved_model.utils.build_tensor_info(probabilities)</span><br><span class="line"></span><br><span class="line">        prediction_signature = (</span><br><span class="line">            tf.saved_model.signature_def_utils.build_signature_def(</span><br><span class="line">                inputs=&#123;<span class="string">'input_ids_ph'</span>: tensor_info_input_ids_ph,</span><br><span class="line">                        <span class="string">'input_mask_ph'</span>: tensor_info_input_mask_ph,</span><br><span class="line">                        <span class="string">'segment_ids_ph'</span>: tensor_info_segment_ids_ph,</span><br><span class="line">                        &#125;,</span><br><span class="line">                outputs=&#123;<span class="string">'probabilities'</span>: tensor_info_probabilities&#125;,</span><br><span class="line">                method_name=tf.saved_model.signature_constants.PREDICT_METHOD_NAME))</span><br><span class="line"></span><br><span class="line">        legacy_init_op = tf.group(tf.tables_initializer(), name=<span class="string">'legacy_init_op'</span>)</span><br><span class="line"></span><br><span class="line">        builder.add_meta_graph_and_variables(</span><br><span class="line">            sess, [tf.saved_model.tag_constants.SERVING],</span><br><span class="line">            signature_def_map=&#123;</span><br><span class="line">                <span class="string">'predict_sentence'</span>:</span><br><span class="line">                    prediction_signature,</span><br><span class="line">                tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY:</span><br><span class="line">                    prediction_signature,</span><br><span class="line">            &#125;,</span><br><span class="line">            legacy_init_op=legacy_init_op)</span><br><span class="line">        builder.save()</span><br><span class="line">        tf.logging.info(<span class="string">'Done exporting!'</span>)</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/36897723.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/643121.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/163/4947848.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='https://link.hhtjim.com/163/617492.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='https://link.hhtjim.com/163/399367220.mp3'></li>
+                        
+                    
+                        
+                            <li title='5' data-url='https://link.hhtjim.com/163/26102241.mp3'></li>
+                        
+                    
+                        
+                            <li title='6' data-url='https://link.hhtjim.com/163/444951.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
