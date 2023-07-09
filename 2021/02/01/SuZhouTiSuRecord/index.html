@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>苏州体素笔面试复盘 - CodeAsPoetry</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    
+    <meta name="description" content="出于一些原因，关注苏州、AI在医疗领域的应用。
+技术考查
+
+项目：对项目刨根问底，角度多是从数据角度，比如缓解某个算法应用的冷启动问题、以及模型评估、数据闭环管理如何反馈，如何快速应对业务变化及迁移,"> 
+    <meta name="author" content="Chengjie Pang"> 
+    <link rel="alternative" href="atom.xml" title="CodeAsPoetry" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">CodeAsPoetry</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">苏州体素笔面试复盘</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">苏州体素笔面试复盘</h1>
+        <div class="stuff">
+            <span>二月 01, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E7%AC%94%E9%9D%A2%E8%AF%95%E5%A4%8D%E7%9B%98/" rel="tag">笔面试复盘</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>出于一些原因，关注苏州、AI在医疗领域的应用。</p>
+<p>技术考查</p>
+<ul>
+<li>项目：对项目刨根问底，角度多是从数据角度，比如缓解某个算法应用的冷启动问题、以及模型评估、数据闭环管理如何反馈，如何快速应对业务变化及迁移等。不难理解，精细领域的小型公司遇到的问题一般是数据量小且AI算法起步难，还有就是业务变更频繁。这种公司多为乙方。不同的甲方爸爸需求不同，乙方儿子需要尽可能适应业务变化，最好有一套比较通用的解决方案，对于不同的需求，能够以最小的代价做出最快的适应，并且能够很快评估、调整，毕竟对于他们，风险是很难接受的。</li>
+<li>算法功底：Bagging VS Boosting 、方差-偏差困境、ROC曲线(如何挑选最优阈值)、模型评价指标(分类：查准、查全、F1-score；回归：误差平方和等)</li>
+</ul>
+<p>代码考查</p>
+<ul>
+<li><p>考查对Python基础的了解，凭对python代码的理解，不要运行直观给出答案</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一个题 1-0</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_list</span><span class="params">(p)</span>:</span></span><br><span class="line">    p = p + [<span class="number">1</span>]</span><br><span class="line">p1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">add_list(p1)</span><br><span class="line">print(p1)      <span class="comment"># [1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 为了更好理解，笔者自己补充以下三个题</span></span><br><span class="line"><span class="comment"># 补充1-1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_list</span><span class="params">(p)</span>:</span></span><br><span class="line">    p.append(<span class="number">1</span>)</span><br><span class="line">p1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">add_list(p1)</span><br><span class="line">print(p1)      <span class="comment"># [1, 2, 3, 1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 补充1-2</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_list</span><span class="params">(p)</span>:</span></span><br><span class="line">    p[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">p1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">add_list(p1)</span><br><span class="line">print(p1)      <span class="comment"># [0, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 补充1-3</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_list</span><span class="params">(p)</span>:</span></span><br><span class="line">    p = <span class="number">0</span></span><br><span class="line">p1 = <span class="number">1</span></span><br><span class="line">add_list(p1)</span><br><span class="line">print(p1)      <span class="comment"># 1</span></span><br></pre></td></tr></table></figure>
+<p>这个题考查的有两个点：</p>
+<ol>
+<li>Python 函数形参和实参的值传递和址传递，网上一般说法是“不可变对象”和“可变对象”，其实我觉得不太形象，如果有C或者C++基础，个人觉得“值传递和址传递”更透彻一些。<a href="https://blog.csdn.net/xiachong27/article/details/88429765" target="_blank" rel="noopener">参考资源</a>；</li>
+<li>Python List中，append和“+”(extend)方法的差别，这一点小伙伴想往祖坟上刨，建议去看Python底层实现Cpython，即C语言实现的Python，其中笔者Python版本是3.7.4，下载源码，cpython-3.7.4/Objects/listobject.c，这个文件就是C语言实现的Python List底层源码，可以深刻扒扒append、extend 函数底层实现</li>
+</ol>
+<p>解读：</p>
+<ol>
+<li>Python函数中，形参如果是List，当实参List传入时，传入的是List的地址，函数操作时，改变List即使不返回任何，传入的List也会发生改变；形参如果是具体的数据原型，如int、float等，传入的是实参的值，即使形参名实参名相同，也仅仅是参数名相同，在内存中分配的地址不同，当你在函数内对着传入的实参一顿操作，其实操作的内存单元和存储真正实参的内存单元不同，所以当你不返回时，函数内部变量地址被释放，外边的传入实参不会发生改变，解释补充1-2、补充1-3。</li>
+<li>Python 中 List，append函数是在原来List扩充元素，返回的List和原来List的地址相同，只是对应C语言中数组大小变大了；而extend函数，即“+”是开辟新的存储地址，将两个list拼接之后，返回新地址指向的List。解释补充1-0、补充1-1。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第二个题 2-0</span></span><br><span class="line">a = [[<span class="number">0</span>]*<span class="number">2</span>]*<span class="number">2</span></span><br><span class="line">a[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">10</span>    <span class="comment"># 改变元素值，但外边大的List包含地址相同的一个内部List,改变内部List中的元素，呈现出来的效果是都改变</span></span><br><span class="line">print(a)    <span class="comment"># [[10, 0], [10, 0]]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二个题补充 2-1</span></span><br><span class="line">a = [[<span class="number">0</span>]*<span class="number">2</span>]*<span class="number">2</span></span><br><span class="line">a[<span class="number">0</span>] = [<span class="number">10</span>]</span><br><span class="line">print(a)    <span class="comment"># [[10], [0, 0]]，[10]开辟新的List，外边大的List包含着两个地址不同的子List</span></span><br></pre></td></tr></table></figure>
+<p>解读：</p>
+<ol>
+<li>列表 * 操作，重复，但包含的子List，内存是一样的</li>
+<li>中括号包围着的开辟新的List地址</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第三个题 3-0</span></span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="number">5</span>, <span class="number">6</span>]]</span><br><span class="line">b = list(a)    <span class="comment"># 开辟新的地址，普通元素分配新的地址，拷贝a的值，子List元素还是包含着a的子List的地址</span></span><br><span class="line">b[<span class="number">0</span>] = <span class="number">10</span>      <span class="comment"># 改变b的普通元素，b变但a不变，因为b中普通元素和a中普通元素地址不同</span></span><br><span class="line">print(b)   <span class="comment"># [10, 2, 3, 4, [5, 6]]</span></span><br><span class="line">print(a)   <span class="comment"># [1, 2, 3, 4, [5, 6]]</span></span><br><span class="line">b[<span class="number">4</span>][<span class="number">1</span>] = <span class="number">99</span>   <span class="comment"># 改变b的子List元素，b变，a也变，因为b中子List元素和a中子List元素地址相同，要变都变</span></span><br><span class="line">print(b)   <span class="comment"># [10, 2, 3, 4, [5, 99]]</span></span><br><span class="line">print(a)   <span class="comment"># [1, 2, 3, 4, [5, 99]]</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第四个题 4-0</span></span><br><span class="line">f0, f1, f2 = [<span class="keyword">lambda</span> x: x*i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>)]</span><br><span class="line">print(f0(<span class="number">1</span>), f1(<span class="number">1</span>), f2(<span class="number">1</span>))     <span class="comment"># 2 2 2 Python 最后绑定的行为都是 i=2 ，即f0, f1, f2都对应解析表达式是2x</span></span><br></pre></td></tr></table></figure>
+<p>解读：<a href="http://bbs.chinaunix.net/forum.php?mod=viewthread&amp;tid=4256044" target="_blank" rel="noopener">参考资料</a></p>
+</li>
+<li><p>考查numpy api熟悉程度 以及 简单实现 &amp; 动态规划思路实现，numpy api 可以用来构建卷积神经网络</p>
+<p>请仅仅使用Python 和Numpy API，来写一个函数。这个函数用来计算一个一位数组的移动平均数（moving average）。也就是：<br>输入：一维的python list叫做 X，由浮点数组成。同时输入一个整数k。<br>输出：一维的python list 叫做Y。Y的数组索引为i，对于i&gt;=k-1,  Y[i] = average(X[i-k+1], X[i-k+2], …, X[i]) ，对于i&lt;k-1, Y[i] = None。</p>
+<p>要求程序运行速度尽可能的快。</p>
+<p>例子：<br>输入：k = 3,  X = [-1，0，1，2，3]<br>输出：Y = [None,  None,  0,  1,  2]</p>
+<p>输入: k = 4, X = [-1, 0, 1, 2, 5]<br>输出: Y = [None, None, None, 0.5, 2]</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 直接递推公式，O(n*k)</span></span><br><span class="line"><span class="comment"># Y[i] = (X[i] + X[i-1] + X[i-2] + X[i-3] + X[i-k+1])/k      i&gt;=k-1</span></span><br><span class="line"><span class="comment"># Y[i] = None  i &lt; k-1</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mov_avg</span><span class="params">(k, X)</span>:</span></span><br><span class="line">    Y = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(X)):</span><br><span class="line">        <span class="keyword">if</span> i &lt; k<span class="number">-1</span>:</span><br><span class="line">            Y.append(<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            sum_k = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i-k+<span class="number">1</span>, i+<span class="number">1</span>):</span><br><span class="line">                sum_k += X[j]</span><br><span class="line">            Y.append(sum_k/k)</span><br><span class="line">    <span class="keyword">return</span> Y</span><br><span class="line">k = <span class="number">4</span></span><br><span class="line">X = [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>]</span><br><span class="line">Y = mov_avg(k, X)</span><br><span class="line">print(Y)</span><br><span class="line">k = <span class="number">3</span></span><br><span class="line">X = [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">Y = mov_avg(k, X)</span><br><span class="line">print(Y)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 动态规划思路 O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mov_avg</span><span class="params">(k, X)</span>:</span></span><br><span class="line">    temp_ele = []</span><br><span class="line">    Y=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(X)):</span><br><span class="line">        <span class="keyword">if</span> i &lt; k:</span><br><span class="line">            temp_ele.append(X[i])</span><br><span class="line">            <span class="keyword">if</span> i==k<span class="number">-1</span>:</span><br><span class="line">                Y.append(sum(temp_ele)/k)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                Y.append(<span class="literal">None</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            temp_ele = temp_ele[<span class="number">1</span>:]</span><br><span class="line">            temp_ele.append(X[i])</span><br><span class="line">            Y.append(sum(temp_ele)/k)</span><br><span class="line">    <span class="keyword">return</span> Y</span><br><span class="line">k = <span class="number">4</span></span><br><span class="line">X = [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>]</span><br><span class="line">Y = mov_avg(k, X)</span><br><span class="line">print(Y)</span><br><span class="line">k = <span class="number">3</span></span><br><span class="line">X = [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">Y = mov_avg(k, X)</span><br><span class="line">print(Y)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># numpy api</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">k = <span class="number">4</span></span><br><span class="line">X = [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>]</span><br><span class="line">n=np.ones(k)</span><br><span class="line">weights=n/k</span><br><span class="line">sma=np.convolve(weights,X)[k<span class="number">-1</span>:-k+<span class="number">1</span>]</span><br><span class="line">print([<span class="literal">None</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(len(X)-len(sma))]+list(sma))</span><br><span class="line"></span><br><span class="line">k = <span class="number">3</span></span><br><span class="line">X = [<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">n=np.ones(k)</span><br><span class="line">weights=n/k</span><br><span class="line">sma=np.convolve(weights,X)[k<span class="number">-1</span>:-k+<span class="number">1</span>]    <span class="comment"># 可以用这个api构建卷积神经网络</span></span><br><span class="line">print([<span class="literal">None</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(len(X)-len(sma))]+list(sma))</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>考查对卷积神经网络的深度理解</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VGG16_modified</span><span class="params">(torch.nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n_classes = <span class="number">1000</span>)</span>:</span></span><br><span class="line">        super(VGG16_modified, self).__init__()</span><br><span class="line">        self.features = torch.nn.Sequential(</span><br><span class="line">            <span class="comment"># conv1_1</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">3</span>, <span class="number">64</span>, <span class="number">11</span>, padding=<span class="number">5</span>),     <span class="comment"># 448  , 448</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># conv1_2</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">64</span>, <span class="number">64</span>, <span class="number">3</span>, padding=<span class="number">1</span>),     <span class="comment"># 448 , 448 </span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># pool1</span></span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, stride=<span class="number">2</span>, return_indices=<span class="literal">True</span>),    <span class="comment"># 224, 224</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># conv2_1</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">64</span>, <span class="number">128</span>, <span class="number">3</span>, padding=<span class="number">1</span>),           <span class="comment"># 224, 224</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># conv2_2</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">128</span>, <span class="number">128</span>, <span class="number">3</span>, padding=<span class="number">1</span>),          <span class="comment"># 224 , 224</span></span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># pool2</span></span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, stride=<span class="number">2</span>, return_indices=<span class="literal">True</span>),  <span class="comment"># 112, 112</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># conv3_1</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">128</span>, <span class="number">256</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># conv3_2</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># conv3_3</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">256</span>, <span class="number">256</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># pool3</span></span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, stride=<span class="number">2</span>, return_indices=<span class="literal">True</span>),  <span class="comment"># 56, 56</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># conv4_1</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">256</span>, <span class="number">512</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># conv4_2</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># conv4_3</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># pool4</span></span><br><span class="line">            torch.nn.MaxPool2d(<span class="number">2</span>, stride=<span class="number">2</span>, return_indices=<span class="literal">True</span>), <span class="comment"># 28, 28</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># conv5_1</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># conv5_2</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            <span class="comment"># conv5_3</span></span><br><span class="line">            torch.nn.Conv2d(<span class="number">512</span>, <span class="number">512</span>, <span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        self.classifier = torch.nn.Sequential(</span><br><span class="line">            <span class="comment"># fc6</span></span><br><span class="line">            torch.nn.Linear(<span class="number">28</span>*<span class="number">28</span>*<span class="number">512</span>, <span class="number">4096</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            torch.nn.Dropout(),</span><br><span class="line"></span><br><span class="line">            <span class="comment"># fc7</span></span><br><span class="line">            torch.nn.Linear(<span class="number">4096</span>, <span class="number">4096</span>),</span><br><span class="line">            torch.nn.ReLU(),</span><br><span class="line">            torch.nn.Dropout(),</span><br><span class="line">            <span class="comment"># fc8</span></span><br><span class="line">            torch.nn.Linear(<span class="number">4096</span>, n_classes),</span><br><span class="line">        )</span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        output = self.features(x)</span><br><span class="line">        output = output.view(output.size()[<span class="number">0</span>], <span class="number">-1</span>)</span><br><span class="line">        output = self.classifier(output)</span><br><span class="line">        <span class="keyword">return</span> output</span><br></pre></td></tr></table></figure>
+<p>仔细阅读源代码vgg16_modified_pytorch.py。注意这个不是标准的 VGG16网络，因此请仔细阅读源代码。回答如下问题：<br>假设输入图片的大小为448 by 448,</p>
+<ol>
+<li><p>假设输入图片大小是：448 X 448 有三个通道，那么self.fc6 层之前的feature map 有多大？有多少个通道？</p>
+<p>卷积网络特征图计算公式：</p>
+<p>O=输出图像的尺寸</p>
+<p>I=输入图像的尺寸</p>
+<p>K=卷积层的核尺寸</p>
+<p>N=核数量</p>
+<p>S=移动步长</p>
+<p>P =填充数</p>
+<p>输出图像尺寸的计算公式如下：</p>
+<script type="math/tex; mode=display">O = \frac {I-K+2P}{S}+1</script><p>feature map : <script type="math/tex">28 \times 28</script></p>
+<p>通道数：512</p>
+</li>
+<li><p>torch.nn.Linear(?, 4096), 一个关键的参数被抹去。这一行中？所代表的数字应该是多少？注意：假设输入图片大小为448 X 448 </p>
+<p>28 x 28 x 512 == 401408</p>
+</li>
+<li><p>计算conv4_1 和 fc8 层的参数量, 假设n_classes = 1000。同时计算这两层的内存占用量和计算复杂度。</p>
+<p>conv4_1  </p>
+<p>参数个数：$3 \times 3 \times 512$  计算复杂度(乘法次数)：$3 \times 3 \times 3 \times 56 \times 56 \times 512$</p>
+<p>解读：卷积核：$3 \times 3$，一共有512个，上一层输出 $56 \times 56$，步长为1，要计算 $56 \times 56$ 次矩阵乘法，每次两个$3 \times 3$矩阵相乘，结果矩阵27个元素，得到每个元素需要3次乘法，乘法计算量：$3 \times 3 \times 3$</p>
+<p>fc8           </p>
+<p>参数个数:  $4090 \times 1000$  计算复杂度(乘法次数)：$4090 \times 4090 \times 1000$</p>
+<p>解读：上一层输出$(1, 4096)$，线性层权重矩阵 $(4090,1000)$， $(1, 4096)$ 和 $(4090,1000)$ 两个矩阵做乘法</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>代码测试，python项目中很多浅层bug由复制粘贴导致，很多深层bug是值传递、址传递、深拷贝、浅拷贝导致。对移动平均数的numpy api考查，抛开深度学习框架，如果有必要，用numpy自己构建卷积神经网络；对VGG网络的考查，充分理解卷积神经网络的作用机理，计算参数量和计算复杂度，体会卷积核作为特征提取器，共享参数的作用，以及比起全连接层，计算量更小的优势。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/36897723.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/643121.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/163/4947848.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='https://link.hhtjim.com/163/617492.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='https://link.hhtjim.com/163/399367220.mp3'></li>
+                        
+                    
+                        
+                            <li title='5' data-url='https://link.hhtjim.com/163/26102241.mp3'></li>
+                        
+                    
+                        
+                            <li title='6' data-url='https://link.hhtjim.com/163/444951.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
