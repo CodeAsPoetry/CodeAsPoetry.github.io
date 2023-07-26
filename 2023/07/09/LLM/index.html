@@ -131,7 +131,7 @@ LLM 本质LLM,">
 <li>tokenizer 的不适配数据集，当模型在趋向收敛状态时，频繁遇到低频 Token ，导致 loss 抖动，且累计达到一定程度，导致 loss 不收敛。</li>
 <li>Normalization 层放置在注意层前后的结构设计，GLM130b 有对应的研究。</li>
 <li>精度问题导致，bfloat 精度数据能够节省很大的显存开销，但当 loss 较小时，它的小数位不足以支撑表示，计算向上取，导致 loss 看起来不收敛。</li>
-<li>数据集中不含较多杂质，而这种杂质经过 tokenizer 处理，呈现出来的大多是低频 Token，导致计算此 token 的 PPL 陡然增大，频繁发生导致累积。</li>
+<li>数据集中含较多杂质，而这种杂质经过 tokenizer 处理，呈现出来的大多是低频 Token，导致计算此 token 的 PPL 陡然增大，频繁发生导致累积。</li>
 <li>诸如种种……</li>
 </ul>
 </li>
@@ -141,12 +141,12 @@ LLM 本质LLM,">
 </ul>
 </li>
 <li>指令微调(IFT)和监督微调(SFT)<ul>
-<li>关于 IFT 和 SFT ，业界有不同的观点，openAI 的 chatGPT 就没有所谓 IFT 这个环节，他们利用累积的用户数据、以及专业标注人员等构建的 <prompt，respose>，即 SFT 数据。而诸如 google 、Meta 以及 bigscience 等机构，他们有些工作，如 FLAN、PromptSource、OPT-IML、T0、Bloomz等，收集了很多之前传统的 NLP 任务数据集，比如文本分类、文本蕴含、摘要等数据集，通过编写 prompt template，转变成  <prompt，respose> 格式，这个过程是叫做 IFT，即更明显的解决 NLP 任务的指令数据微调。</li>
-<li>更有名气的 Meta 开源的 Alpaca，利用 LLaMA 基座，通过 self-instrct 构建 <prompt，respose>，效果也颇为震撼。这一个成果，仿佛让区分 IFT 和 SFT 显的意义不大。因为本质上就是上文所述，就是对齐人类的指令，激发预训练摄入的知识。</li>
+<li>关于 IFT 和 SFT ，业界有不同的观点，openAI 的 chatGPT 就没有所谓 IFT 这个环节，他们利用累积的用户数据、以及专业标注人员等构建的 <prompt，respose>，即 SFT 数据。而诸如 google 、Meta 以及 bigscience 等机构，他们有些工作，如 FLAN、PromptSource、OPT-IML、T0、Bloomz等，收集了很多之前传统的 NLP 任务数据集，比如文本分类、文本蕴含、摘要等数据集，通过编写 prompt template，转变成  (prompt，respose)格式，这个过程是叫做 IFT，即更明显的解决 NLP 任务的指令数据微调。</li>
+<li>更有名气的 Meta 开源的 Alpaca，利用 LLaMA 基座，通过 self-instrct 构建 (prompt，respose)，效果也颇为震撼。这一个成果，仿佛让区分 IFT 和 SFT 显的意义不大。因为本质上就是上文所述，就是对齐人类的指令，激发预训练摄入的知识。</li>
 <li>IFT<ul>
 <li>IFT 工作价值颇受争议，但不管怎么说，它有几个优势：<ul>
-<li>一是可以缓解不少标注数据压力，毕竟如果没有类似 openAI 用户请求数据的资源，全靠人力标注各个领域、各个场景、丰繁指令的高质量 <prompt，respose>，成本蛮高；</li>
-<li>二是相对于 self-instrct 数据质量，之前传统的 NLP 任务的数据集质量更高些，只需借助少部分人力，构建些 prompt 模板，将数据集转换为 <prompt，respose> 格式就可利用；</li>
+<li>一是可以缓解不少标注数据压力，毕竟如果没有类似 openAI 用户请求数据的资源，全靠人力标注各个领域、各个场景、丰繁指令的高质量 (prompt，respose)，成本蛮高；</li>
+<li>二是相对于 self-instrct 数据质量，之前传统的 NLP 任务的数据集质量更高些，只需借助少部分人力，构建些 prompt 模板，将数据集转换为 (prompt，respose) 格式就可利用；</li>
 <li>三是“对齐人类的指令从而激发预训练摄入的知识”这一个目标偏大，可以拆分一下，IFT 作为前置，解决些简单的 NLP 任务，为进一步 SFT 提供一个及格的基线。而 SFT 只需要在基线上相应建设。</li>
 </ul>
 </li>
@@ -154,11 +154,11 @@ LLM 本质LLM,">
 </li>
 <li>SFT<ul>
 <li>SFT 工作重心主要在数据构建上，如果能确保预训练阶段的稳定性，SFT在模型训练上不会有太大问题，无非是解码策略的调优，如 beam search 还是 do sample 之类。</li>
-<li>SFT 的数据构建，各个领域、各个场景、丰繁指令的高质量 <prompt，respose>，重在丰富性、多样性；而总的量不会很多，因为 SFT 阶段是为了“对齐人类的指令从而激发预训练摄入的知识”，并不是让 LLM 学什么新的知识。</li>
-<li>实际上，SFT构建的 <prompt，respose> 最好是 LLM 在预训练阶段习得的，高置信度的数据，更加激发知识，产生出好的respose。尽量保证不含或者少含 LLM 预训练能力之外的数据，因为这些数据会鼓励模型去猜，猜就会增加不稳定，产生所谓的幻觉问题。</li>
+<li>SFT 的数据构建，各个领域、各个场景、丰繁指令的高质量 (prompt，respose)，重在丰富性、多样性；而总的量不会很多，因为 SFT 阶段是为了“对齐人类的指令从而激发预训练摄入的知识”，并不是让 LLM 学什么新的知识。</li>
+<li>实际上，SFT构建的 (prompt，respose) 最好是 LLM 在预训练阶段习得的，高置信度的数据，更加激发知识，产生出好的respose。尽量保证不含或者少含 LLM 预训练能力之外的数据，因为这些数据会鼓励模型去猜，猜就会增加不稳定，产生所谓的幻觉问题。</li>
 </ul>
 </li>
-<li>不管是 IFT，还是 SFT，构建 <prompt，respose>，内容丰富，高质量，多样性高，量上面要求并不多。为了降低 LLM 对齐成本，建议构建风格一致的 response，例如“总-分-总”结构，只是风格一致，风格不是格式，更不是内容，只是一种组织逻辑。</li>
+<li>不管是 IFT，还是 SFT，构建 (prompt，respose)，内容丰富，高质量，多样性高，量上面要求并不多。为了降低 LLM 对齐成本，建议构建风格一致的 response，例如“总-分-总”结构，只是风格一致，风格不是格式，更不是内容，只是一种组织逻辑。</li>
 <li>此外，不管 IFT，还是 SFT之后，相较于预训练之后的模型，生成能力都会受损，被称为“对齐税”，也有较多研究工作，可以参考，用来缓解此问题。</li>
 </ul>
 </li>
