@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>awp_kp_classification - CodeAsPoetry</title>
+    <title>AWP问题分类&amp;小学数学应用题知识点分类 - CodeAsPoetry</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     
-    <meta name="description" content="AWP问题分类&amp;amp;小学数学应用题知识点分类项目背景分析 K12 相关的教育搜索 query，包括拍照搜题上传的照片，在学科分布中，数学占比最大，呈将近一半左右。再考虑目前在 K12解题产品级应,"> 
+    <meta name="description" content="项目背景分析 K12 相关的教育搜索 query，包括拍照搜题上传的照片，在学科分布中，数学占比最大，呈将近一半左右。再考虑目前在 K12解题产品级应用上 NLP 模型的能力，小学数学作为入手点较为,"> 
     <meta name="author" content="Chengjie Pang"> 
     <link rel="alternative" href="atom.xml" title="CodeAsPoetry" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -40,7 +40,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">awp_kp_classification</h3>
+    <h3 class="subtitle">AWP问题分类&小学数学应用题知识点分类</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -55,14 +55,16 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">awp_kp_classification</h1>
+        <h1 class="title">AWP问题分类&小学数学应用题知识点分类</h1>
         <div class="stuff">
-            <span>十二月 16, 2022</span>
+            <span>七月 16, 2023</span>
             
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/NLP/" rel="tag">NLP</a></li></ul>
+
 
         </div>
         <div class="content markdown">
-            <h1 id="AWP问题分类-amp-小学数学应用题知识点分类"><a href="#AWP问题分类-amp-小学数学应用题知识点分类" class="headerlink" title="AWP问题分类&amp;小学数学应用题知识点分类"></a>AWP问题分类&amp;小学数学应用题知识点分类</h1><h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>分析 K12 相关的教育搜索 query，包括拍照搜题上传的照片，在学科分布中，数学占比最大，呈将近一半左右。再考虑目前在 K12解题产品级应用上 NLP 模型的能力，小学数学作为入手点较为合适，尤为其中的算术文字题。即通过自然语言文本将问题描述清楚，通过加减乘除四则运算，便可求解答案的小学数学应用题。在 NLP 模型进行解答的前置环节，需要判定给定的题目描述是否为 AWP (算术文字题) 问题以及对应考察的知识点类型，比如“鸡兔同笼”、“和差倍”、“归一问题”、“工程问题”、“行程问题”等，便于后续的公式生成、答案生成以及解析生成等。因此是否为 AWP 问题 (二分类) 和知识点分类 (多分类多标签)，需要进行建模实现。</p>
+            <h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>分析 K12 相关的教育搜索 query，包括拍照搜题上传的照片，在学科分布中，数学占比最大，呈将近一半左右。再考虑目前在 K12解题产品级应用上 NLP 模型的能力，小学数学作为入手点较为合适，尤为其中的算术文字题。即通过自然语言文本将问题描述清楚，通过加减乘除四则运算，便可求解答案的小学数学应用题。在 NLP 模型进行解答的前置环节，需要判定给定的题目描述是否为 AWP (算术文字题) 问题以及对应考察的知识点类型，比如“鸡兔同笼”、“和差倍”、“归一问题”、“工程问题”、“行程问题”等，便于后续的公式生成、答案生成以及解析生成等。因此是否为 AWP 问题 (二分类) 和知识点分类 (多分类多标签)，需要进行建模实现。</p>
 <h2 id="项目过程"><a href="#项目过程" class="headerlink" title="项目过程"></a>项目过程</h2><p>此项目的模型实现，并不是重点和难点。二分类模型、多标签多分类模型，都是机器学习中的典型场景。唯一可能需要花些心思和精力的点是存在严重类别或标签的不平衡，进而导致长尾类别或标签分布过分稀疏被模型忽略。那么在这些长尾类别和标签上，精度和召回都会偏低。这个问题既可以通过 loss 的构建 ( focal loss、asymmetric loss)进行缓解，也可以通过稀疏类别和稀疏标签的上采样数据增强进行缓解，还可以通过难样本挖掘等进行缓解。 ( 注：Asymmetric Loss For Multi-Label Classification  论文 )</p>
 <p>此项目重点和难点，在于标准定义和数据集的构建上。标准定义包括，业务目标场景归化到 AWP 问题的标准定义、AWP 问题自身的标准定义、小学数学应用题涉及的知识点多类别定义、多标签定义；数据集构建包括，AWP 问题分类训练数据集中负样本的构建、知识点分类中的不同类别、不同标签对应多少样本比例的构建，以及最终能够准确反映线上收益的测试集和评估业务指标的构建。</p>
 <h3 id="标准定义"><a href="#标准定义" class="headerlink" title="标准定义"></a>标准定义</h3><h4 id="业务目标场景归化到-AWP-问题定义"><a href="#业务目标场景归化到-AWP-问题定义" class="headerlink" title="业务目标场景归化到 AWP 问题定义"></a>业务目标场景归化到 AWP 问题定义</h4><p>该项目的业务目标是针对用户上传的有解题需求的 query (包括拍照搜题)中的小学数学应用题，能够给出公式、解题步骤、答案和解析。主要收益来自于返回的自然搜索结果和拍照搜题中的题库未覆盖到的用户查询 query，或者是查询结果质量偏低，只是近似题不是原题等场景，从而利用 AI 解题能力提高用户体验。因此，将此业务目标场景归化到 AI 解答 AWP 问题。</p>
