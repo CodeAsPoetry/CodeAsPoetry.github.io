@@ -113,7 +113,7 @@
 <li><p>采用其预训练和跨模态指令微调，在儿童语音场景的单语言语音、多语言语音、单语音模态数据上进行Next Token预训练；在语音-文本pair对齐多模态数据上进行跨模态指令微调；</p>
 </li>
 <li><p>在模型推理时，获取到ASR的文本识别结果，条件允许时，可以再充分利用LLM对文本纠错的能力，一定程度上缓解 ASR 字错率。当然也可以结合prompt优化工作，比如“下面这段文本中可能由于发音不准或近似模糊，会有一些错别字，请结合上下文语义纠正过来，正确的文本是：xxx”，NLP领域中，文本纠错数据集也可以加以利用。</p>
-<p><img src="/images/LLM_correct.jpeg" alt="image"></p>
+<p><img src="/images/LLM_correct_mask.jpeg" alt="image"></p>
 </li>
 </ul>
 </li>
