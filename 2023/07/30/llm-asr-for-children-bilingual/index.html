@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>llm_asr_for_children_bilingual - CodeAsPoetry</title>
+    <title>儿童双语场景下的LLM+ASR思路 - CodeAsPoetry</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
@@ -40,7 +40,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">llm_asr_for_children_bilingual</h3>
+    <h3 class="subtitle">儿童双语场景下的LLM+ASR思路</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -55,7 +55,7 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">llm_asr_for_children_bilingual</h1>
+        <h1 class="title">儿童双语场景下的LLM+ASR思路</h1>
         <div class="stuff">
             <span>七月 30, 2023</span>
             
@@ -78,43 +78,43 @@
 <p>利用 LLM 在句段核心语义理解的智能，结合用户对话机制的设计和 Langchain 工程实现，尽可能解决儿童双语 ASR 问题，让用户体验更流畅可控。</p>
 <h2 id="项目调研"><a href="#项目调研" class="headerlink" title="项目调研"></a>项目调研</h2><ul>
 <li><p>现有人机交互ASR系统及产品解决方案：<a href="https://www.woshipm.com/ai/4144034.html；" target="_blank" rel="noopener">https://www.woshipm.com/ai/4144034.html；</a></p>
-<p><img src="/Users/codeaspoetry/Desktop/t_ASR.png" alt="截屏2023-07-30 下午2.37.38"></p>
+<p><img src="/images/t_ASR.png" alt="image"></p>
 </li>
-<li><p><a href="">SpeechGPT</a>，最新结合LLM，针对语音模态，具有内在的跨模态对话能力，能够感知语音和生成语音内容；</p>
+<li><p><a href="https://codeaspoetry.github.io/2023/07/30/SpeechGPT/" target="_blank" rel="noopener">SpeechGPT</a>，最新结合LLM，针对语音模态，具有内在的跨模态对话能力，能够感知语音和生成语音内容；</p>
 </li>
-<li><p><a href="">S4</a>, Efficiently Modeling Long Sequences with Structured State Spaces , S4，具有长序列建模天然优势的S4架构。</p>
+<li><p><a href="https://codeaspoetry.github.io/2023/07/30/s4/" target="_blank" rel="noopener">S4</a>, Efficiently Modeling Long Sequences with Structured State Spaces , S4，具有长序列建模天然优势的S4架构。</p>
 </li>
 <li><p>STRUCTURED STATE SPACE DECODER FOR SPEECH RECOGNITION AND SYNTHESIS，比起transformer，利用S4架构，天然优势适配超长序列，在ASR领域已有典型应用，有着更快的计算效率、推理速度和更大的序列长度空间、更高的性能；</p>
 </li>
-<li><p><a href="">Beit 系列技术详解</a>，将图像模态数据 tokenizer 处理，转换成 Token 序列</p>
+<li><p><a href="https://codeaspoetry.github.io/2023/07/30/beit/" target="_blank" rel="noopener">Beit 系列技术详解</a>，将图像模态数据 tokenizer 处理，转换成 Token 序列</p>
 </li>
 </ul>
 <h2 id="拟解决方案"><a href="#拟解决方案" class="headerlink" title="拟解决方案"></a>拟解决方案</h2><h3 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h3><p>针对ASR系统，采用SpeechGPT的离散化语音单元抽取器(discrete unit extractor)和LLM(红框部分)。</p>
-<p><img src="/Users/codeaspoetry/Desktop/截屏2023-07-30 下午2.37.38.png" alt="截屏2023-07-30 下午2.37.38"></p>
+<p><img src="/images/speechgpt" alt="image"></p>
 <h3 id="性能优化及提高"><a href="#性能优化及提高" class="headerlink" title="性能优化及提高"></a>性能优化及提高</h3><ol>
 <li><p>针对儿童语音数据的缺乏</p>
 <ul>
 <li><p>尽量收集，只要是儿童语音数据，不管是单语言、混合语言，还是单语音模态，还是语音-文本pair对齐多模态，都是需要的。</p>
 </li>
 <li><p>儿童中英混合语音，通过手机APP在安静环境下，录制2700人，共计1000小时，录音内容为日常用语，课文读物、百科闲聊等。<a href="https://www.data-baker.com/data/index/distinguish" target="_blank" rel="noopener">https://www.data-baker.com/data/index/distinguish</a></p>
-<p><img src="/Users/codeaspoetry/Desktop/ASR_data.png" alt="截屏2023-07-30 下午2.37.38"></p>
+<p><img src="/images/ASR_data.png" alt="image"></p>
 </li>
 </ul>
 </li>
 <li><p>针对儿童、双语场景的 ASR 模型算法优化</p>
 <ul>
 <li><p>利用收集到的儿童语音数据(单语言、多语言、单语音模态)，针对SpeechGPT中用K-means获取语音单元字表的方法，借鉴Beit系列中图像Tokenizer的VQ-VAE的思路，换用性能更优的基于自监督的VAE码本构建思路，将原HuBERT 已有的成人语音字表再次进行重训和扩充，最终获得在成人语音基础上适配儿童目标双语，甚至多语的语音单元字表；</p>
-<p><img src="/Users/codeaspoetry/Desktop/BEit_VQ.png" alt="截屏2023-07-30 下午2.37.38"></p>
+<p><img src="/images/BEit_VQ.png" alt="image"></p>
 </li>
 <li><p>利用收集到的儿童语音数据(语音-文本pair对齐多模态)，借鉴Beit系列在loss构建的优化，逐步将离散化语音单元抽取器形成的语音元素序列特征表征融入后续loss计算，整体优化全局的loss，包括ASR目标损失和语音元素序列表征损失，从而继续优化码本字表和离散化语音单元抽取器的抽取语音元素序列的能力；</p>
-<p><img src="/Users/codeaspoetry/Desktop/beit_loss.png" alt="image-20230730224055986"></p>
+<p><img src="/images/beit_loss.png" alt="image"></p>
 </li>
 <li><p>整个过程采用SpeechGPT的Cross-modal Instruction的prompt构建模式，结合儿童双语环境下的场景要求优化prompt工程，结合gpt-4构建指令，比如，“下面是一段儿童朗读古诗的语音，可能存在发音模糊不准的情形，请仔细辨认并给出最可能准确的文本，适当允许用近似读音的字词替换：xxx”等；</p>
 </li>
 <li><p>采用其预训练和跨模态指令微调，在儿童语音场景的单语言语音、多语言语音、单语音模态数据上进行Next Token预训练；在语音-文本pair对齐多模态数据上进行跨模态指令微调；</p>
 </li>
 <li><p>在模型推理时，获取到ASR的文本识别结果，条件允许时，可以再充分利用LLM对文本纠错的能力，一定程度上缓解 ASR 字错率。当然也可以结合prompt优化工作，比如“下面这段文本中可能由于发音不准或近似模糊，会有一些错别字，请结合上下文语义纠正过来，正确的文本是：xxx”，NLP领域中，文本纠错数据集也可以加以利用。</p>
-<p><img src="/Users/codeaspoetry/Desktop/LLM_correct.jpeg" alt="截屏2023-07-30 下午2.37.38"></p>
+<p><img src="/images/LLM_correct.jpeg" alt="image"></p>
 </li>
 </ul>
 </li>
@@ -127,13 +127,13 @@
 <li>SpeechGPT对语音/文本两种序列模态融合，在多轮对话场景要求更大序列长度，寻求S4架构彻底解决</li>
 </ul>
 <h3 id="Lora-私人定制化ASR-LLM服务-成本允许条件下，偏脑洞"><a href="#Lora-私人定制化ASR-LLM服务-成本允许条件下，偏脑洞" class="headerlink" title="Lora 私人定制化ASR+LLM服务(成本允许条件下，偏脑洞)"></a>Lora 私人定制化ASR+LLM服务(成本允许条件下，偏脑洞)</h3><ul>
-<li><p><a href="">Lora</a> Low-Rank Adaptation of Large Language Models</p>
+<li><p><a href="https://codeaspoetry.github.io/2023/07/30/lora/" target="_blank" rel="noopener">Lora</a> Low-Rank Adaptation of Large Language Models</p>
 <ul>
 <li><p>将ASR+LLM冻结在云端，终端放置私人订制的 Lora 矩阵，进行适配</p>
-<p><img src="/Users/codeaspoetry/Desktop/lora_info.png" alt="截屏2023-07-30 下午2.37.38"></p>
+<p><img src="/images/lora_info.png" alt="image"></p>
 </li>
 <li><p>有待确认终端是否具备放置Lora矩阵的内存、以及计算能力(lora矩阵和传输来的云端冻结的ASR+LLM输出向量进行计算)</p>
-<p><img src="/Users/codeaspoetry/Desktop/lora_memory.png" alt="截屏2023-07-30 下午2.37.38"></p>
+<p><img src="/images/lora_memory.png" alt="image"></p>
 </li>
 <li><p>通信开销(云端冻结ASR+LLM输出向量开销)</p>
 </li>
@@ -142,7 +142,7 @@
 <li><p>智能音响(天猫精灵)、蓝牙耳机等主流成熟芯片了解，可以通过 I/O 口将语音数据透传出，用于处理计算</p>
 <ul>
 <li><p>高通 QCC3040 </p>
-<p><img src="/Users/codeaspoetry/Desktop/QCC3040.jpeg" alt="截屏2023-07-30 下午2.37.38"></p>
+<p><img src="/images/QCC3040.jpeg" alt="image"></p>
 </li>
 </ul>
 </li>
