@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>llm_asr_for_children_bilingual - CodeAsPoetry</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    
+    <meta name="description" content="项目背景LLM 时代，天猫精灵，作为智能家居的典型应用，在语音命令驱动模式上加持 LLM 的智能和相关第三方生态和插件，有广阔的发展前景。其中，听清听懂用户的语音指令是重要基础，此外更为实时精准的语,"> 
+    <meta name="author" content="Chengjie Pang"> 
+    <link rel="alternative" href="atom.xml" title="CodeAsPoetry" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">CodeAsPoetry</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">llm_asr_for_children_bilingual</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">llm_asr_for_children_bilingual</h1>
+        <div class="stuff">
+            <span>七月 30, 2023</span>
+            
+
+        </div>
+        <div class="content markdown">
+            <h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>LLM 时代，天猫精灵，作为智能家居的典型应用，在语音命令驱动模式上加持 LLM 的智能和相关第三方生态和插件，有广阔的发展前景。其中，听清听懂用户的语音指令是重要基础，此外更为实时精准的语音识别系统(ASR)对用户体验也是至关重要。然而在智能早教中的儿童双语场景，ASR 一直被视为业界难题。原因如下(不限)：</p>
+<ul>
+<li>儿童相较于成人，身体结构不同，声线吐字导致语音语言特性不同，此外语音、文字、语言学习也不完善，诸如种种，有着天然的技术辨别难度；</li>
+<li>儿童说话习惯也与成人不同，包括且不限于语速较慢、常留尾音等，也给现有ASR系统造成一定困难；</li>
+<li>双语多语场景(包括方言)，语种所对应的语音迥异，在音素上有很大不同，当混合着多语言输入，挑战加大；</li>
+<li>现有ASR数据多为成人语音数据，儿童语音数据的缺乏，ASR针对儿童语音建模，数据缺乏导致模式缺陷。</li>
+</ul>
+<p>智能早教中，相较文字语言的缺乏，语音可以发挥更大空间。场景利用更为丰富，包括不限于：</p>
+<ul>
+<li>pass</li>
+<li>pass</li>
+<li>pass</li>
+</ul>
+<p>利用 LLM 在句段核心语义理解的智能，结合用户对话机制的设计和 Langchain 工程实现，尽可能解决儿童双语 ASR 问题，让用户体验更流畅可控。</p>
+<h2 id="项目调研"><a href="#项目调研" class="headerlink" title="项目调研"></a>项目调研</h2><ul>
+<li><p>现有人机交互ASR系统及产品解决方案：<a href="https://www.woshipm.com/ai/4144034.html；" target="_blank" rel="noopener">https://www.woshipm.com/ai/4144034.html；</a></p>
+<p><img src="/Users/codeaspoetry/Desktop/t_ASR.png" alt="截屏2023-07-30 下午2.37.38"></p>
+</li>
+<li><p><a href="">SpeechGPT</a>，最新结合LLM，针对语音模态，具有内在的跨模态对话能力，能够感知语音和生成语音内容；</p>
+</li>
+<li><p><a href="">S4</a>, Efficiently Modeling Long Sequences with Structured State Spaces , S4，具有长序列建模天然优势的S4架构。</p>
+</li>
+<li><p>STRUCTURED STATE SPACE DECODER FOR SPEECH RECOGNITION AND SYNTHESIS，比起transformer，利用S4架构，天然优势适配超长序列，在ASR领域已有典型应用，有着更快的计算效率、推理速度和更大的序列长度空间、更高的性能；</p>
+</li>
+<li><p><a href="">Beit 系列技术详解</a>，将图像模态数据 tokenizer 处理，转换成 Token 序列</p>
+</li>
+</ul>
+<h2 id="拟解决方案"><a href="#拟解决方案" class="headerlink" title="拟解决方案"></a>拟解决方案</h2><h3 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h3><p>针对ASR系统，采用SpeechGPT的离散化语音单元抽取器(discrete unit extractor)和LLM(红框部分)。</p>
+<p><img src="/Users/codeaspoetry/Desktop/截屏2023-07-30 下午2.37.38.png" alt="截屏2023-07-30 下午2.37.38"></p>
+<h3 id="性能优化及提高"><a href="#性能优化及提高" class="headerlink" title="性能优化及提高"></a>性能优化及提高</h3><ol>
+<li><p>针对儿童语音数据的缺乏</p>
+<ul>
+<li><p>尽量收集，只要是儿童语音数据，不管是单语言、混合语言，还是单语音模态，还是语音-文本pair对齐多模态，都是需要的。</p>
+</li>
+<li><p>儿童中英混合语音，通过手机APP在安静环境下，录制2700人，共计1000小时，录音内容为日常用语，课文读物、百科闲聊等。<a href="https://www.data-baker.com/data/index/distinguish" target="_blank" rel="noopener">https://www.data-baker.com/data/index/distinguish</a></p>
+<p><img src="/Users/codeaspoetry/Desktop/ASR_data.png" alt="截屏2023-07-30 下午2.37.38"></p>
+</li>
+</ul>
+</li>
+<li><p>针对儿童、双语场景的 ASR 模型算法优化</p>
+<ul>
+<li><p>利用收集到的儿童语音数据(单语言、多语言、单语音模态)，针对SpeechGPT中用K-means获取语音单元字表的方法，借鉴Beit系列中图像Tokenizer的VQ-VAE的思路，换用性能更优的基于自监督的VAE码本构建思路，将原HuBERT 已有的成人语音字表再次进行重训和扩充，最终获得在成人语音基础上适配儿童目标双语，甚至多语的语音单元字表；</p>
+<p><img src="/Users/codeaspoetry/Desktop/BEit_VQ.png" alt="截屏2023-07-30 下午2.37.38"></p>
+</li>
+<li><p>利用收集到的儿童语音数据(语音-文本pair对齐多模态)，借鉴Beit系列在loss构建的优化，逐步将离散化语音单元抽取器形成的语音元素序列特征表征融入后续loss计算，整体优化全局的loss，包括ASR目标损失和语音元素序列表征损失，从而继续优化码本字表和离散化语音单元抽取器的抽取语音元素序列的能力；</p>
+<p><img src="/Users/codeaspoetry/Desktop/beit_loss.png" alt="image-20230730224055986"></p>
+</li>
+<li><p>整个过程采用SpeechGPT的Cross-modal Instruction的prompt构建模式，结合儿童双语环境下的场景要求优化prompt工程，结合gpt-4构建指令，比如，“下面是一段儿童朗读古诗的语音，可能存在发音模糊不准的情形，请仔细辨认并给出最可能准确的文本，适当允许用近似读音的字词替换：xxx”等；</p>
+</li>
+<li><p>采用其预训练和跨模态指令微调，在儿童语音场景的单语言语音、多语言语音、单语音模态数据上进行Next Token预训练；在语音-文本pair对齐多模态数据上进行跨模态指令微调；</p>
+</li>
+<li><p>在模型推理时，获取到ASR的文本识别结果，条件允许时，可以再充分利用LLM对文本纠错的能力，一定程度上缓解 ASR 字错率。当然也可以结合prompt优化工作，比如“下面这段文本中可能由于发音不准或近似模糊，会有一些错别字，请结合上下文语义纠正过来，正确的文本是：xxx”，NLP领域中，文本纠错数据集也可以加以利用。</p>
+<p><img src="/Users/codeaspoetry/Desktop/LLM_correct.jpeg" alt="截屏2023-07-30 下午2.37.38"></p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="ASR-模型可控"><a href="#ASR-模型可控" class="headerlink" title="ASR 模型可控"></a>ASR 模型可控</h3><ul>
+<li>进行场景针对优化，得到儿童双语场景中能够胜任的ASR模型，部署云端</li>
+<li>结合LangChain，模型前置上部署一些简单的过滤门控机制，比如从语音频率、音色等多个维度判断，决定调用ASR服务路由，符合条件则调用相关ASR服务，在之后，可以再一些兜底机制，比如当给出的ASR解码文本置信度很低时，考虑是否走一次文本纠错，或者其他兜底链路，提高可控性。</li>
+</ul>
+<h3 id="结合多轮对话优化"><a href="#结合多轮对话优化" class="headerlink" title="结合多轮对话优化"></a>结合多轮对话优化</h3><ul>
+<li>SpeechGPT对语音/文本两种序列模态融合，在多轮对话场景要求更大序列长度，寻求S4架构彻底解决</li>
+</ul>
+<h3 id="Lora-私人定制化ASR-LLM服务-成本允许条件下，偏脑洞"><a href="#Lora-私人定制化ASR-LLM服务-成本允许条件下，偏脑洞" class="headerlink" title="Lora 私人定制化ASR+LLM服务(成本允许条件下，偏脑洞)"></a>Lora 私人定制化ASR+LLM服务(成本允许条件下，偏脑洞)</h3><ul>
+<li><p><a href="">Lora</a> Low-Rank Adaptation of Large Language Models</p>
+<ul>
+<li><p>将ASR+LLM冻结在云端，终端放置私人订制的 Lora 矩阵，进行适配</p>
+<p><img src="/Users/codeaspoetry/Desktop/lora_info.png" alt="截屏2023-07-30 下午2.37.38"></p>
+</li>
+<li><p>有待确认终端是否具备放置Lora矩阵的内存、以及计算能力(lora矩阵和传输来的云端冻结的ASR+LLM输出向量进行计算)</p>
+<p><img src="/Users/codeaspoetry/Desktop/lora_memory.png" alt="截屏2023-07-30 下午2.37.38"></p>
+</li>
+<li><p>通信开销(云端冻结ASR+LLM输出向量开销)</p>
+</li>
+</ul>
+</li>
+<li><p>智能音响(天猫精灵)、蓝牙耳机等主流成熟芯片了解，可以通过 I/O 口将语音数据透传出，用于处理计算</p>
+<ul>
+<li><p>高通 QCC3040 </p>
+<p><img src="/Users/codeaspoetry/Desktop/QCC3040.jpeg" alt="截屏2023-07-30 下午2.37.38"></p>
+</li>
+</ul>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/36897723.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/643121.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/163/4947848.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='https://link.hhtjim.com/163/617492.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='https://link.hhtjim.com/163/399367220.mp3'></li>
+                        
+                    
+                        
+                            <li title='5' data-url='https://link.hhtjim.com/163/26102241.mp3'></li>
+                        
+                    
+                        
+                            <li title='6' data-url='https://link.hhtjim.com/163/444951.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+</html>
